@@ -59,7 +59,7 @@ snakemake -n --dag | dot -Tsvg > dagsra-tools.svg
 ![DAG](https://gitlab.rlp.net/bioinformatik-praktikum-sose21/MLink/salmonella-enterica-pipeline/-/raw/main/dagsra-tools.svg)
 
 About sra-tools:
-- fastq-dump is a tools to download fastq files from the short-reads archive
+- fastq-dump is a tool to download fastq files from the short-reads archive
 - --split-files is a parameter to save paired-ended reads into two seperate files
 - SRR1965341 is the barcode given in the instructions
 -  -O is a parameter to specify the output directory, which is: /data/short-reads/
