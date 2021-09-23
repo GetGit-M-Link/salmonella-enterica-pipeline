@@ -53,4 +53,4 @@ rule download_sr:
 ```
 conda install graphviz
 ```
-
+![DAG](https://gitlab.rlp.net/bioinformatik-praktikum-sose21/MLink/salmonella-enterica-pipeline/-/raw/main/dagsra-tools.svg)
