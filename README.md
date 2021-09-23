@@ -65,10 +65,15 @@ About sra-tools:
 -  -O is a parameter to specify the output directory, which is: /data/short-reads/
 - Output: two files named BARCODE_1.fastq and BARCODE_2.fastq
 
+1 = file contains “forward” reads
+2 = file contains “reverse” reads
+
 SPAdes:
 ```
---pe-1 <#> <filename>       file with forward reads for paired-end library number <#>.
-                             
---pe-2 <#> <filename>       file with reverse reads for paired-end library number <#>. 
+-1 <filename>               file with forward paired-end reads
+-2 <filename>               file with reverse paired-end reads
+-s <filename>               file with unpaired reads
+-o <output_dir> directory to store all the resulting files (required)
 
 ```
+
