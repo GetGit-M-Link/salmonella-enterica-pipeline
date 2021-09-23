@@ -5,4 +5,4 @@ rule download_sr:
     output:
         "/data/short-reads/{barcodes}_{NR}.fastq",
     shell:
-        "fastq-dump --split-files {wildcards.barcodes} -O /data/short-reads/"
+        "fasterq-dump {wildcards.barcodes} -O /data/short-reads/"
