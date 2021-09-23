@@ -24,3 +24,5 @@ conda activate salmonella
 #### Creation Diary
 - setup a conda environment from yml file
 - created a folder strucutre and README
+- Read about sra-tools [here](https://eaton-lab.org/articles/sra-downloads/)
+- Read about SPAdes [here] (https://github.com/ablab/spades)
