@@ -53,4 +53,7 @@ rule download_sr:
 ```
 conda install graphviz
 ```
+```
+snakemake -n --dag | dot -Tsvg > dagsra-tools.svg
+```
 ![DAG](https://gitlab.rlp.net/bioinformatik-praktikum-sose21/MLink/salmonella-enterica-pipeline/-/raw/main/dagsra-tools.svg)
