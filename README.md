@@ -26,3 +26,4 @@ conda activate salmonella
 - created a folder strucutre and README
 - Read about sra-tools [here](https://eaton-lab.org/articles/sra-downloads/)
 - Read about SPAdes [here] (https://github.com/ablab/spades)
+- State of tools and version at this time [here](https://gitlab.rlp.net/bioinformatik-praktikum-sose21/MLink/salmonella-enterica-pipeline/-/blob/main/tools/tools-state-after-first-tools-install)
