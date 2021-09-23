@@ -64,3 +64,11 @@ About sra-tools:
 - SRR1965341 is the barcode given in the instructions
 -  -O is a parameter to specify the output directory, which is: /data/short-reads/
 - Output: two files named BARCODE_1.fastq and BARCODE_2.fastq
+
+SPAdes:
+```
+--pe-1 <#> <filename>       file with forward reads for paired-end library number <#>.
+                             
+--pe-2 <#> <filename>       file with reverse reads for paired-end library number <#>. 
+
+```
