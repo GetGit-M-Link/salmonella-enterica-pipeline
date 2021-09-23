@@ -63,3 +63,4 @@ About sra-tools:
 - --split-files is a parameter to save paired-ended reads into two seperate files
 - SRR1965341 is the barcode given in the instructions
 -  -O is a parameter to specify the output directory, which is: /data/short-reads/
+- Output: two files named BARCODE_1.fastq and BARCODE_2.fastq
