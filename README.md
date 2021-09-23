@@ -49,3 +49,8 @@ rule download_sr:
     shell:
         "fastq-dump --split-files {wildcards.barcodes} -O /data/short-reads/"
 ```
+- Install Graphviz to generate pretty picture
+```
+conda install graphviz
+```
+
