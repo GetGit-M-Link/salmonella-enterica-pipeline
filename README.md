@@ -53,4 +53,27 @@ rule download_sr:
 ```
 conda install graphviz
 ```
+```
+snakemake -n --dag | dot -Tsvg > dagsra-tools.svg
+```
+![DAG](https://gitlab.rlp.net/bioinformatik-praktikum-sose21/MLink/salmonella-enterica-pipeline/-/raw/main/dagsra-tools.svg)
+
+About sra-tools:
+- fastq-dump is a tool to download fastq files from the short-reads archive
+- --split-files is a parameter to save paired-ended reads into two seperate files
+- SRR1965341 is the barcode given in the instructions
+-  -O is a parameter to specify the output directory, which is: /data/short-reads/
+- Output: two files named BARCODE_1.fastq and BARCODE_2.fastq
+
+1 = file contains “forward” reads
+2 = file contains “reverse” reads
+
+SPAdes:
+```
+-1 <filename>               file with forward paired-end reads
+-2 <filename>               file with reverse paired-end reads
+-s <filename>               file with unpaired reads
+-o <output_dir> directory to store all the resulting files (required)
+
+```
 
