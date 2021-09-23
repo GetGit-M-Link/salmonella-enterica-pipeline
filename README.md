@@ -37,7 +37,7 @@ conda activate salmonella
     shell:
         "fastq-dump --split-files SRR1965341 -O /data/short-reads/"
 ```
--Expand Snakefile to allow for variable barcodes:
+- Expand Snakefile to allow for variable barcodes:
 ```
 rule all:
     input:
