@@ -98,4 +98,6 @@ screen -S Spades
 ```
 snakemake --cores 6
 ```
-
+Todo:
+- Logging
+- Document input, output (outside of Snakefile)
