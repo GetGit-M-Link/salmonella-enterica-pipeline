@@ -76,4 +76,19 @@ SPAdes:
 -o <output_dir> directory to store all the resulting files (required)
 
 ```
+Changed from fastq-dump to fasterq-dump. Fasterq-dump is the more recent tools and also separates the unpaired reads automatically (splits into 3: forward, reverse, error)
+```
+rule all:
+    input:
+        expand("/data/short-reads/{barcodes}_{NR}.fastq",NR=["1","2"],barcodes=["SRR1965341"])
+rule download_sr:
+    output:
+        "/data/short-reads/{barcodes}_{NR}.fastq",
+    shell:
+        "fasterq-dump {wildcards.barcodes} -O /data/short-reads/"
+```
+Upgraded sra-tools to a newer version to get access to fasterq-dump
+```
+conda install sra-tools=2.11.0
+```
 
