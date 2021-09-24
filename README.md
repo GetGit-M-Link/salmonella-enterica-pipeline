@@ -91,4 +91,11 @@ Upgraded sra-tools to a newer version to get access to fasterq-dump
 ```
 conda install sra-tools=2.11.0
 ```
+```
+screen -S Spades
+```
+![DAG for current pipeline with SPAdes](https://gitlab.rlp.net/bioinformatik-praktikum-sose21/MLink/salmonella-enterica-pipeline/-/raw/main/dag-spades.svg)
+```
+snakemake --cores 6
+```
 
