@@ -23,5 +23,5 @@ rule SPAdes:
     params:
         optional=optional_input("/data/short-reads/{barcodes}.fastq")    
     shell:
-       "spades.py -k {wildcards.value_of_k} -1 {input.forward_1} -2 {input.reverse_2} params.optional -o /data/assembled/{wildcards.barcodes}/{wildcards.value_of_k}/"
+       "spades.py -k {wildcards.value_of_k} -1 {input.forward_1} -2 {input.reverse_2} {params.optional} -o /data/assembled/{wildcards.barcodes}/{wildcards.value_of_k}/"
 
