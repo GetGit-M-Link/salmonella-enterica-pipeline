@@ -106,6 +106,7 @@ Added additional barcodes to config.yaml
 
 ```
 screen -S expand
+conda activate salmonella
 ```
 ```
 snakemake --cores 6
