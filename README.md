@@ -101,3 +101,12 @@ snakemake --cores 6
 Todo:
 - Logging
 - Document input, output (outside of Snakefile)
+
+Added additional barcodes to config.yaml
+
+```
+screen -S expand
+```
+```
+snakemake --cores 6
+```
