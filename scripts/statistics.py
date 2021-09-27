@@ -1,6 +1,16 @@
 ```
 Setup
 ```
+class assembly:
+    def __init__(self, contigs_fasta_filename):
+    self.contigs_fasta_filename = contigs_fasta_filename
+    #contig_lengths
+    #avg_contigs_length
+    #totl_nr_contigs
+    #shortest_contig
+    #longest_contig
+    #N50_all_contigs
+    #N50_contigs_over_300
 
 
 
@@ -25,8 +35,7 @@ def read_fasta(file):
     lengths = []
     for length in dirty_lengths:
         lengths.append(int(length.split("_")[0]))
-        
-    print(lengths)
+    return lengths
 
 
 ```
