@@ -3,7 +3,7 @@ Setup
 ```
 import os
 
-class assembly:
+class Assembly:
     def __init__(self, contigs_fasta_filename):
     self.contigs_fasta_filename = contigs_fasta_filename
     #contig_lengths
@@ -17,9 +17,10 @@ class assembly:
 ```
 get files
 ```
+assemblies = []
 for item in os.scandir(input_path):
     if item.is_dir():
-        print(item.name)
+        assemblies.append(Assembly(input_path + "/" item.name + "/contigs.fasta")
 
 
 
