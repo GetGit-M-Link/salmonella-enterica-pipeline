@@ -31,9 +31,9 @@ class Assembly:
         self.k_value = k_value
     def __str__(self):
         return f"""
-                    ===========================================================================================================================
+                   ==========================================================================================================================
                    [statistics analysis for barcode: {self.barcode} assembled with SPAdes with parameter k = {self.k_value}]
-                   _______________ _______________ _______________ _______________ _______________ _______________ _______________ _______________     
+                   _______________ _______________ _______________ _______________ _______________ _______________ _______________ ___________
                    average read length: {self.avg_read_length} 
                    average contig length: {self.avg_contigs_length} 
                    total number of contigs: {self.totl_nr_contigs} 
