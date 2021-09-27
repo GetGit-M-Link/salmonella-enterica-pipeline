@@ -106,7 +106,8 @@ Decision for best assembly
 
 ```
 # Get assemblies (with different k's) for one barcode in the snakefile (this script is run for each barcode)
-all_assemblies = get_assemblies(snakemake.input[0])
+# all_assemblies = get_assemblies(snakemake.input[0])
+all_assemblies = get_assemblies(sys.argv[1])
 with open("/data/assembled/stats.txt", 'w') as stats:
     for assembly in all_assemblies
     stats.write(assembly.N50_all_contigs + "n")
