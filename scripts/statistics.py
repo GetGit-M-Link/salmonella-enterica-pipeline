@@ -73,18 +73,21 @@ def calc_avg_contig_length(list_of_lengths):
     return sum(list_of_lengths) /len(list_of_lengths)
 
 
-
-
-
-
-
-
 ```
 N50 of all contigs
 https://onestopdataanalysis.com/n50-genome/
 
 ```
-
+def calculate_N50(list_of_lengths):
+    tmp = []
+    for tmp_number in set(list_of_lengths):
+            tmp += [tmp_number] * list_of_lengths.count(tmp_number) * tmp_number
+    tmp.sort()
+    if (len(tmp) % 2) == 0:
+        median = (tmp[int(len(tmp) / 2) - 1] + tmp[int(len(tmp) / 2)]) / 2
+    else:
+        median = tmp[int(len(tmp) / 2)]
+    return median
 
 
 
@@ -93,7 +96,17 @@ https://onestopdataanalysis.com/n50-genome/
 N50 of all contigs longer than 300bp
 
 ```
-
+def calculate_N50_bigger_300(list_of_lengths):
+    tmp = []
+    filtered_lengths = [nr for nr in list_of_lengths if nr > 300]
+    for tmp_number in set(filtered_lengths):
+            tmp += [tmp_number] * filtered_lengths.count(tmp_number) * tmp_number
+    tmp.sort()
+    if (len(tmp) % 2) == 0:
+        median = (tmp[int(len(tmp) / 2) - 1] + tmp[int(len(tmp) / 2)]) / 2
+    else:
+        median = tmp[int(len(tmp) / 2)]
+    return median
 
 
 
