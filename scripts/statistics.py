@@ -37,9 +37,6 @@ def get_assemblies(assembly_path):
             assemblies.append(Assembly((input_path + "/" item.name + "/contigs.fasta"), (input_path + "/" item.name + "/spades.log"))
     return assemblies
 
-
-
-
 ```
 average read length
 ->spades.log Average read length
@@ -47,9 +44,6 @@ average read length
 def read_avg_read_length(filepath):
     with open(filepath, 'r') as log_file:
         return int((log_file.read().split("Average read length ")[1].split("\n")[0]))
-
-
-
 
 ```
 Read contig.fasta file
@@ -91,9 +85,6 @@ def calculate_N50(list_of_lengths):
         median = tmp[int(len(tmp) / 2)]
     return median
 
-
-
-
 ```
 N50 of all contigs longer than 300bp
 
@@ -114,8 +105,11 @@ def calculate_N50_bigger_300(list_of_lengths):
 Decision for best assembly
 
 ```
-# Get assembly for each barcode in the snakefile (this script is run for each barcode so this only does every time)
+# Get assemblies (with different k's) for one barcode in the snakefile (this script is run for each barcode)
 all_assemblies = get_assemblies(snakemake.input[0])
+with open("/data/assembled/stats.txt", 'w') as stats:
+    for assembly in all_assemblies
+    stats.write(assembly.N50_all_contigs + "n")
 
 
 
