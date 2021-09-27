@@ -111,7 +111,7 @@ Decision for best assembly
 all_assemblies = get_assemblies(sys.argv[1])
 with open("/data/assembled/stats.txt", 'w') as stats:
     for assembly in all_assemblies:
-        stats.write(assembly.N50_all_contigs + "n")
+        stats.write(assembly.N50_all_contigs.toString() + "\n")
 
 
 
