@@ -30,7 +30,16 @@ class Assembly:
         self.barcode = barcode
         self.k_value = k_value
     def __str__(self):
-        return '__str__ for Car'
+        return """\n====[statistics analysis for barcode: {self.barcode} assembled with SPAdes with parameter k = {self.k_value}]===\n\n
+                   average read length: {self.avg_read_length} \n\n
+                   average contig length: {self.avg_contigs_length} \n\n
+                   total number of contigs: {self.totl_nr_contigs} \n\n
+                   shortest contig: {self.shortest_contig} \n\n
+                   longest contig: {self.longest_contig} \n\n
+                   N50 of all contigs: {self.N50_all_contigs} \n\n
+                   N50 of all contigs over 300 bp: {self.N50_contigs_over_300} \n\n
+                =========================================================================================================================== \n """
+
 
 """
 get files
@@ -38,9 +47,11 @@ get files
 def get_assemblies(assembly_path):
     assemblies = []
     barcode = assembly_path.strip"assembled/"[1].strip("/")[0]
+    contigs_file = assembly_path + "/" + item.name + "/contigs.fasta"
+    log_file = assembly_path + "/" + item.name + "/spades.log"
     for item in os.scandir(assembly_path):
         if item.is_dir():
-            assemblies.append(Assembly((assembly_path + "/" + item.name + "/contigs.fasta"), (assembly_path + "/" + item.name + "/spades.log"), str(item.name), barcode))
+            assemblies.append(Assembly(contigs_file, log_file, str(item.name), barcode))
     return assemblies
 
 """
