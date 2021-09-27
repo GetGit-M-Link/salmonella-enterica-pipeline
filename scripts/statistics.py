@@ -33,9 +33,9 @@ get files
 """
 def get_assemblies(assembly_path):
     assemblies = []
-    for item in os.scandir(input_path):
+    for item in os.scandir(assembly_path):
         if item.is_dir():
-            assemblies.append(Assembly((input_path + "/" + item.name + "/contigs.fasta"), (input_path + "/" + item.name + "/spades.log")))
+            assemblies.append(Assembly((assembly_path + "/" + item.name + "/contigs.fasta"), (assembly_path + "/" + item.name + "/spades.log")))
     return assemblies
 
 """
