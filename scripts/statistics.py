@@ -6,7 +6,7 @@ import os
 import sys
 
 class Assembly:
-    def __init__(self, contigs_fasta_filename, log_filename):
+    def __init__(self, contigs_fasta_filename, log_filename, k_value, barcode):
         # path to contigs.fasta file
         self.contigs_fasta_filename = contigs_fasta_filename
         # path to spades.log file
@@ -27,15 +27,20 @@ class Assembly:
         self.N50_all_contigs = calculate_N50(self.contig_lengths)
         # N50 for all contigs longer than 300bp from contigs.fasta
         self.N50_contigs_over_300 = calculate_N50_bigger_300(self.contig_lengths)
+        self.barcode = barcode
+        self.k_value = k_value
+    def __str__(self):
+        return '__str__ for Car'
 
 """
 get files
 """
 def get_assemblies(assembly_path):
     assemblies = []
+    barcode = assembly_path.strip"assembled/"[1].strip("/")[0]
     for item in os.scandir(assembly_path):
         if item.is_dir():
-            assemblies.append(Assembly((assembly_path + "/" + item.name + "/contigs.fasta"), (assembly_path + "/" + item.name + "/spades.log")))
+            assemblies.append(Assembly((assembly_path + "/" + item.name + "/contigs.fasta"), (assembly_path + "/" + item.name + "/spades.log"), str(item.name), barcode))
     return assemblies
 
 """
