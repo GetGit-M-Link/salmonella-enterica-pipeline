@@ -110,16 +110,12 @@ def calculate_N50_bigger_300(list_of_lengths):
         median = tmp[int(len(tmp) / 2)]
     return median
 
-
-
-
-
-
 ```
 Decision for best assembly
 
 ```
-
+# Get assembly for each barcode in the snakefile (this script is run for each barcode so this only does every time)
+all_assemblies = get_assemblies(snakemake.input[0])
 
 
 
