@@ -22,7 +22,9 @@ class Assembly:
         self.shortest_contig = min(self.contig_lengths)
         # Longest contig in contigs.fasta
         self.longest_contig = max (self.contig_lengths)
+        # N50 calculated from contig.fasta
         self.N50_all_contigs = calculate_N50(self.contig_lengths)
+        # N50 for all contigs longer than 300bp from contigs.fasta
         self.N50_contigs_over_300 = calculate_N50_bigger_300(self.contig_lengths)
 
 ```
