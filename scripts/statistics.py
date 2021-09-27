@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-```
+"""
 Setup
-```
+"""
 import os
 
 class Assembly:
@@ -27,9 +27,9 @@ class Assembly:
         # N50 for all contigs longer than 300bp from contigs.fasta
         self.N50_contigs_over_300 = calculate_N50_bigger_300(self.contig_lengths)
 
-```
+"""
 get files
-```
+"""
 def get_assemblies(assembly_path):
     assemblies = []
     for item in os.scandir(input_path):
@@ -37,17 +37,17 @@ def get_assemblies(assembly_path):
             assemblies.append(Assembly((input_path + "/" item.name + "/contigs.fasta"), (input_path + "/" item.name + "/spades.log"))
     return assemblies
 
-```
+"""
 average read length
 ->spades.log Average read length
-```
+"""
 def read_avg_read_length(filepath):
     with open(filepath, 'r') as log_file:
         return int((log_file.read().split("Average read length ")[1].split("\n")[0]))
 
-```
+"""
 Read contig.fasta file
-```
+"""
 def get_contig_lengths(file):
     with open(file, 'r') as fasta:
     #  contigs = fasta.read().split(">NODE")
@@ -61,19 +61,19 @@ def get_contig_lengths(file):
     return lengths
 
 
-```
+"""
 average contig length
 
-```
+"""
 def calc_avg_contig_length(list_of_lengths):
     return sum(list_of_lengths) /len(list_of_lengths)
 
 
-```
+"""
 N50 of all contigs
 https://onestopdataanalysis.com/n50-genome/
 
-```
+"""
 def calculate_N50(list_of_lengths):
     tmp = []
     for tmp_number in set(list_of_lengths):
@@ -85,10 +85,10 @@ def calculate_N50(list_of_lengths):
         median = tmp[int(len(tmp) / 2)]
     return median
 
-```
+"""
 N50 of all contigs longer than 300bp
 
-```
+"""
 def calculate_N50_bigger_300(list_of_lengths):
     tmp = []
     filtered_lengths = [nr for nr in list_of_lengths if nr > 300]
@@ -101,10 +101,10 @@ def calculate_N50_bigger_300(list_of_lengths):
         median = tmp[int(len(tmp) / 2)]
     return median
 
-```
+"""
 Decision for best assembly
 
-```
+"""
 # Get assemblies (with different k's) for one barcode in the snakefile (this script is run for each barcode)
 # all_assemblies = get_assemblies(snakemake.input[0])
 all_assemblies = get_assemblies(sys.argv[1])
@@ -119,7 +119,7 @@ with open("/data/assembled/stats.txt", 'w') as stats:
 
 
 
-```
+"""
 output
 
-```
+"""
