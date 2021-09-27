@@ -22,10 +22,10 @@ average read length
 ```
 
 
-```k
+```
 Read contig.fasta file
 ```
-def read_fasta(file):
+def get_contig_lengths(file):
     with open(file, 'r') as fasta:
     #  contigs = fasta.read().split(">NODE")
     # Splits fasta file at _length_ to have lines starting with the length (except the first item in the list, which is the text before)
