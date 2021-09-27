@@ -30,7 +30,7 @@ class Assembly:
         self.barcode = barcode
         self.k_value = k_value
     def __str__(self):
-        return """\n====[statistics analysis for barcode: {self.barcode} assembled with SPAdes with parameter k = {self.k_value}]===\n\n
+        return f"""\n====[statistics analysis for barcode: {self.barcode} assembled with SPAdes with parameter k = {self.k_value}]===\n\n
                    average read length: {self.avg_read_length} \n\n
                    average contig length: {self.avg_contigs_length} \n\n
                    total number of contigs: {self.totl_nr_contigs} \n\n
