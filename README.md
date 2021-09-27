@@ -76,6 +76,10 @@ SPAdes:
 -o <output_dir> directory to store all the resulting files (required)
 
 ```
+>Contig: von continious: zusammenhängend: überlappende reads
+>Scaffold are chained together contigs using additional information about position and orientation of the contigs in the genome and using gaps
+
+
 Changed from fastq-dump to fasterq-dump. Fasterq-dump is the more recent tools and also separates the unpaired reads automatically (splits into 3: forward, reverse, error)
 ```
 rule all:
@@ -111,3 +115,5 @@ conda activate salmonella
 ```
 snakemake --cores 6
 ```
+
+
