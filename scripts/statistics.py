@@ -6,16 +6,24 @@ import os
 
 class Assembly:
     def __init__(self, contigs_fasta_filename, log_filename):
-    self.contigs_fasta_filename = contigs_fasta_filename
-    self.log_filename = log_filename
-    self.contig_lengths = get_contig_lengths(contigs_fasta_filename)
-    self.avg_read_length = read_avg_read_length(log_filename)
-    self.avg_contigs_length = calc_avg_contig_length(self.contig_lengths)
-    self.totl_nr_contigs = len(self.contig_lengths)
-    self.shortest_contig = min(self.contig_lengths)
-    self.longest_contig = max (self.contig_lengths)
-    self.N50_all_contigs
-    self.N50_contigs_over_300
+        # path to contigs.fasta file
+        self.contigs_fasta_filename = contigs_fasta_filename
+        # path to spades.log file
+        self.log_filename = log_filename
+        # list of contig length in contig.fasta
+        self.contig_lengths = get_contig_lengths(contigs_fasta_filename)
+        # average read length of input files for spades assembly (queried from spades.log)
+        self.avg_read_length = read_avg_read_length(log_filename)
+        # average contigs length (calculated from contigs.fasta)
+        self.avg_contigs_length = calc_avg_contig_length(self.contig_lengths)
+         # total number of contigs (counted in contigs.fasta)
+        self.totl_nr_contigs = len(self.contig_lengths)
+        # Shortest contig in contigs.fasta
+        self.shortest_contig = min(self.contig_lengths)
+        # Longest contig in contigs.fasta
+        self.longest_contig = max (self.contig_lengths)
+        self.N50_all_contigs
+        self.N50_contigs_over_300
 
 ```
 get files
@@ -67,27 +75,6 @@ def calc_avg_contig_length(list_of_lengths):
 
 
 
-```
-total number of contigs
-
-```
-
-
-
-
-```
- shortest contig
-
-```
-
-
-
-
-
-```
-longest contig
-
-```
 
 
 
