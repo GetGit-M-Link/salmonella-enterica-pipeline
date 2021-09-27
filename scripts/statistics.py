@@ -3,6 +3,7 @@
 Setup
 """
 import os
+import sys
 
 class Assembly:
     def __init__(self, contigs_fasta_filename, log_filename):
