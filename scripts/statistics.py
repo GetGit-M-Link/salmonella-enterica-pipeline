@@ -8,6 +8,7 @@ Setup
 
 ```
 average read length
+->spades.log Average read length
 ```
 
 
