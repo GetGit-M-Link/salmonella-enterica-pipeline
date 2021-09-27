@@ -12,7 +12,9 @@ average read length
 ```
 
 
-
+```
+Read contig.fasta file
+```
 
 
 
@@ -50,6 +52,7 @@ longest contig
 
 ```
 N50 of all contigs
+https://onestopdataanalysis.com/n50-genome/
 
 ```
 
