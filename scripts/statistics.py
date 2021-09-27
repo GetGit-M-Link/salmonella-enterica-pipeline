@@ -6,21 +6,23 @@ import os
 class Assembly:
     def __init__(self, contigs_fasta_filename):
     self.contigs_fasta_filename = contigs_fasta_filename
-    #contig_lengths
-    #avg_contigs_length
-    #totl_nr_contigs
-    #shortest_contig
-    #longest_contig
-    #N50_all_contigs
-    #N50_contigs_over_300
+    self.contig_lengths = get_contig_lengths(contigs_fasta_filename)
+    self.avg_contigs_length
+    self.totl_nr_contigs
+    self.shortest_contig
+    self.longest_contig
+    self.N50_all_contigs
+    self.N50_contigs_over_300
 
 ```
 get files
 ```
-assemblies = []
-for item in os.scandir(input_path):
-    if item.is_dir():
-        assemblies.append(Assembly(input_path + "/" item.name + "/contigs.fasta")
+def get_assemblies(assembly_path):
+    assemblies = []
+    for item in os.scandir(input_path):
+        if item.is_dir():
+            assemblies.append(Assembly(input_path + "/" item.name + "/contigs.fasta")
+    return assemblies
 
 
 
