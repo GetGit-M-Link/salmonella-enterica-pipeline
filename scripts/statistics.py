@@ -10,9 +10,9 @@ class Assembly:
     self.contig_lengths = get_contig_lengths(contigs_fasta_filename)
     self.avg_read_length = read_avg_read_length(log_filename)
     self.avg_contigs_length = calc_avg_contig_length(self.contig_lengths)
-    self.totl_nr_contigs
-    self.shortest_contig
-    self.longest_contig
+    self.totl_nr_contigs = len(self.contig_lengths)
+    self.shortest_contig = min(self.contig_lengths)
+    self.longest_contig = max (self.contig_lengths)
     self.N50_all_contigs
     self.N50_contigs_over_300
 
