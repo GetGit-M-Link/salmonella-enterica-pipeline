@@ -46,7 +46,7 @@ get files
 """
 def get_assemblies(assembly_path):
     assemblies = []
-    barcode = assembly_path.strip("assembled/")[1].strip("/")[0]
+    barcode = assembly_path
     
     for item in os.scandir(assembly_path):
         if item.is_dir():
