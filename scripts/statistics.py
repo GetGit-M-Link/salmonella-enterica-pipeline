@@ -47,10 +47,11 @@ get files
 def get_assemblies(assembly_path):
     assemblies = []
     barcode = assembly_path.strip("assembled/")[1].strip("/")[0]
-    contigs_file = assembly_path + "/" + item.name + "/contigs.fasta"
-    log_file = assembly_path + "/" + item.name + "/spades.log"
+    
     for item in os.scandir(assembly_path):
         if item.is_dir():
+            contigs_file = assembly_path + "/" + item.name + "/contigs.fasta"
+            log_file = assembly_path + "/" + item.name + "/spades.log"
             assemblies.append(Assembly(contigs_file, log_file, str(item.name), barcode))
     return assemblies
 
