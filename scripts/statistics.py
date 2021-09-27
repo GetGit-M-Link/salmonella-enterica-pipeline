@@ -112,7 +112,7 @@ N50 of all contigs longer than 300bp
 """
 def calculate_N50_bigger_300(list_of_lengths):
     tmp = []
-    filtered_lengths = [nr for nr in list_of_lengths if nr > 300]
+    filtered_lengths = [x for x in list_of_lengths if x>300]
     for tmp_number in set(filtered_lengths):
             tmp += [tmp_number] * filtered_lengths.count(tmp_number) * tmp_number
     tmp.sort()
