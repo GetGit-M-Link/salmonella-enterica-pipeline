@@ -44,7 +44,7 @@ average read length
 """
 def read_avg_read_length(filepath):
     with open(filepath, 'r') as log_file:
-        return int((log_file.read().split("Average read length ")[1].split("\n")[0]))
+        return float((log_file.read().split("Average read length ")[1].split("\n")[0]))
 
 """
 Read contig.fasta file
