@@ -30,14 +30,14 @@ class Assembly:
         self.barcode = barcode
         self.k_value = k_value
     def __str__(self):
-        return f"""\n====[statistics analysis for barcode: {self.barcode} assembled with SPAdes with parameter k = {self.k_value}]===\n\n
-                   average read length: {self.avg_read_length} \n\n
-                   average contig length: {self.avg_contigs_length} \n\n
-                   total number of contigs: {self.totl_nr_contigs} \n\n
-                   shortest contig: {self.shortest_contig} \n\n
-                   longest contig: {self.longest_contig} \n\n
-                   N50 of all contigs: {self.N50_all_contigs} \n\n
-                   N50 of all contigs over 300 bp: {self.N50_contigs_over_300} \n\n
+        return f"""\n====[statistics analysis for barcode: {self.barcode} assembled with SPAdes with parameter k = {self.k_value}]===
+                   average read length: {self.avg_read_length} \n
+                   average contig length: {self.avg_contigs_length} \n
+                   total number of contigs: {self.totl_nr_contigs} \n
+                   shortest contig: {self.shortest_contig} \n
+                   longest contig: {self.longest_contig} \n
+                   N50 of all contigs: {self.N50_all_contigs} \n
+                   N50 of all contigs over 300 bp: {self.N50_contigs_over_300} \n
                 =========================================================================================================================== \n """
 
 
