@@ -9,7 +9,7 @@ class Assembly:
     self.log_filename = log_filename
     self.contig_lengths = get_contig_lengths(contigs_fasta_filename)
     self.avg_read_length = read_avg_read_length(log_filename)
-    self.avg_contigs_length
+    self.avg_contigs_length = calc_avg_contig_length(self.contig_lengths)
     self.totl_nr_contigs
     self.shortest_contig
     self.longest_contig
@@ -60,6 +60,9 @@ def get_contig_lengths(file):
 average contig length
 
 ```
+def calc_avg_contig_length(list_of_lengths):
+    return sum(list_of_lengths) /len(list_of_lengths)
+
 
 
 
