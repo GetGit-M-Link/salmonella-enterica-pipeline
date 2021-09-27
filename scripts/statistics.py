@@ -1,6 +1,8 @@
 ```
 Setup
 ```
+import os
+
 class assembly:
     def __init__(self, contigs_fasta_filename):
     self.contigs_fasta_filename = contigs_fasta_filename
@@ -12,6 +14,12 @@ class assembly:
     #N50_all_contigs
     #N50_contigs_over_300
 
+```
+get files
+```
+for item in os.scandir(input_path):
+    if item.is_dir():
+        print(item.name)
 
 
 
