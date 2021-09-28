@@ -145,8 +145,8 @@ def make_N50_plots(barcode):
     for assembly in barcode:
         d.append(
             {
-                'barcode': assembly.barcode
-                'k_value': assembly.k_value
+                'barcode': assembly.barcode,
+                'k_value': assembly.k_value,
                 'N50': assembly.N50_all_contigs
             }
         )
