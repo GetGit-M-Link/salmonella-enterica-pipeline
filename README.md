@@ -121,4 +121,5 @@ conda install matplotlib
 conda install pandas
 conda install seaborn
 ```
+![DAg after scale up](dag-scale-up.svg)
 
