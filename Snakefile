@@ -52,5 +52,5 @@ rule analysis:
     output:
         "data/Analysis.md"
     shell:
-        python3 scripts/statistics.py /data/assembled/
+        "python3 scripts/statistics.py /data/assembled/"
 
