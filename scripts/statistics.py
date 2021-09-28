@@ -140,7 +140,7 @@ barcodes = get_barcodes(dir_path)
 # To save a list of assemblies for each barcode
 masterlist_of_assemblies = []
 for barcode in barcodes:
-    masterlist_of_assemblies.append(get_assemblies(dir_path + "/" + barcode))
+    masterlist_of_assemblies.append(get_assemblies(dir_path + barcode))
 
 with open(dir_path + "Analysis.md", 'w') as stats:
     for barcode in masterlist_of_assemblies:
