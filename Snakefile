@@ -30,8 +30,8 @@ rule adapter_trimming:
         """
 rule SPAdes_untrimmed:
     input:
-        forward_1 = ["/data/short-reads/{barcodes}_1.fastq".format(barcodes=barcodes) for barcodes in config["BARCODES"]],
-        reverse_2 = ["/data/short-reads/{barcodes}_2.fastq".format(barcodes=barcodes) for barcodes in config["BARCODES"]]
+        forward_1 = "/data/short-reads/{barcodes}_1.fastq",
+        reverse_2 = "/data/short-reads/{barcodes}_2.fastq"
     output:
         "/data/assembled/{barcodes}_untrimmed/{value_of_k}/contigs.fasta"
     params:
