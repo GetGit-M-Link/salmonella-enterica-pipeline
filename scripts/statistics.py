@@ -62,7 +62,8 @@ def get_assemblies(assembly_path):
         if item.is_dir():
             contigs_file = assembly_path + "/" + item.name + "/contigs.fasta"
             log_file = assembly_path + "/" + item.name + "/spades.log"
-            assemblies.append(Assembly(contigs_file, log_file, str(item.name), barcode))
+            if os.path.exists(contigs_file) and os.path.exists(log_file):
+                assemblies.append(Assembly(contigs_file, log_file, str(item.name), barcode))
     return assemblies
 
 """
