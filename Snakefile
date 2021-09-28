@@ -37,7 +37,7 @@ rule SPAdes_untrimmed:
     params:
         optional=optional_input("/data/short-reads/{barcodes}.fastq")    
     shell:
-       "spades.py -k {wildcards.value_of_k} -1 {input.forward_1} -2 {input.reverse_2} {params.optional} -o /data/assembled/{wildcards.barcodes}/{wildcards.value_of_k}/"
+       "spades.py -k {wildcards.value_of_k} -1 {input.forward_1} -2 {input.reverse_2} {params.optional} -o /data/assembled/{wildcards.barcodes}_untrimmed/{wildcards.value_of_k}/"
 rule SPAdes_trimmed:
     input:
         forward_1 = "/data/trimmed/{barcodes}_1.fastq",
@@ -45,7 +45,7 @@ rule SPAdes_trimmed:
     output:
         "/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta"
     shell:
-       "spades.py -k {wildcards.value_of_k} -1 {input.forward_1} -2 {input.reverse_2} -o /data/assembled/{wildcards.barcodes}/{wildcards.value_of_k}/"
+       "spades.py -k {wildcards.value_of_k} -1 {input.forward_1} -2 {input.reverse_2} -o /data/assembled/{wildcards.barcodes}_trimmed/{wildcards.value_of_k}/"
 rule analysis:
     input:
         expand("/data/assembled/{barcodes}_untrimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
