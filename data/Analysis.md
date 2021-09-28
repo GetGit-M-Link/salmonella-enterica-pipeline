@@ -19,6 +19,13 @@
 
 
 
+
+
+
+
+
+
+
  # statistics analysis for barcode: SRR2075991 assembled with SPAdes with parameter k = auto  
         average contig length: 28736.869565217392  
         total number of contigs: 184  
@@ -27,6 +34,13 @@
         N50 of all contigs: 142689.0  
         N50 of all contigs over 300 bp: 142689.0 
 <img src="../plots/SRR2075991_auto.png" width="400"> 
+
+
+
+
+
+
+
 
 
 
@@ -54,6 +68,13 @@
 
 
 
+
+
+
+
+
+
+
  # statistics analysis for barcode: SRR7828287 assembled with SPAdes with parameter k = 55  
         average contig length: 29729.526946107784  
         total number of contigs: 167  
@@ -68,6 +89,13 @@
 
 
 
+
+
+
+
+
+
+
  # statistics analysis for barcode: SRR7828287 assembled with SPAdes with parameter k = auto  
         average contig length: 25633.72680412371  
         total number of contigs: 194  
@@ -76,6 +104,13 @@
         N50 of all contigs: 156381  
         N50 of all contigs over 300 bp: 156381 
 <img src="../plots/SRR7828287_auto.png" width="400"> 
+
+
+
+
+
+
+
 
 
 
@@ -103,6 +138,13 @@
 
 
 
+
+
+
+
+
+
+
  # statistics analysis for barcode: SRR1965341 assembled with SPAdes with parameter k = 55  
         average contig length: 15548.29906542056  
         total number of contigs: 321  
@@ -117,6 +159,13 @@
 
 
 
+
+
+
+
+
+
+
  # statistics analysis for barcode: SRR1965341 assembled with SPAdes with parameter k = auto  
         average contig length: 15843.787301587301  
         total number of contigs: 315  
@@ -125,6 +174,13 @@
         N50 of all contigs: 147418  
         N50 of all contigs over 300 bp: 147418.0 
 <img src="../plots/SRR1965341_auto.png" width="400"> 
+
+
+
+
+
+
+
 
 
 
@@ -152,6 +208,13 @@
 
 
 
+
+
+
+
+
+
+
  # statistics analysis for barcode: SRR5584993 assembled with SPAdes with parameter k = 55  
         average contig length: 16090.289719626167  
         total number of contigs: 321  
@@ -160,6 +223,13 @@
         N50 of all contigs: 73507  
         N50 of all contigs over 300 bp: 73507.0 
 <img src="../plots/SRR5584993_55.png" width="400"> 
+
+
+
+
+
+
+
 
 
 
