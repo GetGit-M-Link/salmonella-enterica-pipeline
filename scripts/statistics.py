@@ -52,6 +52,7 @@ def get_barcodes(dir_path):
     for item in os.scandir(dir_path):
         if item.is_dir() and item.name.startswith("SRR"):
             barcodes.append(item.name)
+    return barcodes
     
 
 def get_assemblies(assembly_path):
