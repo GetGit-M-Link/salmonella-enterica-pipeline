@@ -49,7 +49,7 @@ rule SPAdes_trimmed:
 rule analysis:
     input:
         "/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",
-        "/data/assembled/{barcodes}/{value_of_k}/contigs.fasta"
+        "/data/assembled/{barcodes}_untrimmed/{value_of_k}/contigs.fasta"
     output:
         "/plots/{barcodes}_{value_of_k}.png"
     shell:
