@@ -48,8 +48,8 @@ rule SPAdes_trimmed:
        "spades.py -k {wildcards.value_of_k} -1 {input.forward_1} -2 {input.reverse_2} -o /data/assembled/{wildcards.barcodes}/{wildcards.value_of_k}/"
 rule analysis:
     input:
-        "/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",
-        "/data/assembled/{barcodes}_untrimmed/{value_of_k}/contigs.fasta"
+        expand("/data/assembled/{barcodes}_untrimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
+        expand("/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
     output:
         "/plots/{barcodes}_{value_of_k}.png"
     shell:
