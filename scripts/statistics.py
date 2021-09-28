@@ -47,10 +47,16 @@ class Assembly:
 """
 get files
 """
+def get_barcodes(dir_path):
+    barcodes = []
+    for item in os.scandir(dir_path):
+        if item.is_dir() and item.name.startswith("SRR"):
+            barcodes.append(item.name)
+    
+
 def get_assemblies(assembly_path):
     assemblies = []
     barcode = assembly_path.split("assembled/")[1].split("/")[0]
-    
     for item in os.scandir(assembly_path):
         if item.is_dir():
             contigs_file = assembly_path + "/" + item.name + "/contigs.fasta"
@@ -128,10 +134,17 @@ Decision for best assembly
 """
 # Get assemblies (with different k's) for one barcode in the snakefile (this script is run for each barcode)
 # all_assemblies = get_assemblies(snakemake.input[0])
-all_assemblies = get_assemblies(sys.argv[1])
-with open("/data/assembled/stats.txt", 'w') as stats:
-    for assembly in all_assemblies:
-        stats.write(str(assembly))
+dir_path = sys.argv[1]
+barcodes = get_barcodes(dir_path)
+# To save a list of assemblies for each barcode
+masterlist_of_assemblies = []
+for barcode in barcodes:
+    masterlist_of_assemblies.append(get_assemblies(dir_path + "/" + barcode))
+
+with open(dir_path + "Analysis.md", 'w') as stats:
+    for barcode in masterlist_of_assemblies:
+        for assembly in barcode:
+            stats.write(str(assembly))
 
 
 
