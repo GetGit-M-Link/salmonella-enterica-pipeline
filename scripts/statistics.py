@@ -221,7 +221,8 @@ for assembly_list in masterlist_of_assemblies:
         else:
             best_assembly = sorted_assemblies[1].contigs_fasta_filename
     best_assemblies.append(best_assembly)
-print(str(best_assemblies))
+with open("/data/" + "best_assemblies.txt", 'w') as out_best_assemblies:
+    stats.write(str(best_assemblies))
 
 
 
