@@ -118,5 +118,7 @@ snakemake --cores 6
 write python script statistics.py in /scripts
 ```
 conda install matplotlib
+conda install pandas
+conda install seaborn
 ```
 
