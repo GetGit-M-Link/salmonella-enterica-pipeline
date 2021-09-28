@@ -143,7 +143,7 @@ masterlist_of_assemblies = []
 for barcode in barcodes:
     masterlist_of_assemblies.append(get_assemblies(dir_path + barcode))
 
-with open(dir_path + "Analysis.md", 'w') as stats:
+with open("../data/" + "Analysis.md", 'w') as stats:
     for barcode in masterlist_of_assemblies:
         for assembly in barcode:
             stats.write(str(assembly))
