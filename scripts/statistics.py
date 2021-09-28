@@ -141,6 +141,20 @@ def make_contig_plots(assembly):
     plt.clf()
 
 def make_N50_plots(barcode):
+    d = []
+    for assembly in barcode:
+        d.append(
+            {
+                'barcode': assembly.barcode
+                'k_value': assembly.k_value
+                'N50': assembly.N50_all_contigs
+            }
+        )
+    pd.DataFrame(d)
+    sns.histplot(data=d, x="N50", log_scale=True)
+    plt.savefig("../plots/" + assembly.barcode + "_N50")
+    plt.clf()
+
     
     
 
