@@ -40,8 +40,8 @@ class Assembly:
         shortest contig: {self.shortest_contig}  
         longest contig: {self.longest_contig}  
         N50 of all contigs: {self.N50_all_contigs}  
-        N50 of all contigs over 300 bp: {self.N50_contigs_over_300}  
-![contig_plot](../plots/{self.barcode}_{self.k_value}.png) \n \n """
+        N50 of all contigs over 300 bp: {self.N50_contigs_over_300} 
+<img src="../plots/{self.barcode}_{self.k_value}.png" width="400"> \n \n """
 
 
 """
@@ -138,6 +138,7 @@ def make_plots(assembly):
     df = pd.DataFrame (assembly.contig_lengths, columns = ['contig_length'])
     sns.histplot(data=df, x="contig_length", log_scale=True)
     plt.savefig("../plots/" + assembly.barcode + "_" + assembly.k_value)
+    df = pd.DataFrame()
 
 
 
