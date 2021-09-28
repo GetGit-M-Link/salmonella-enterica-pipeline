@@ -143,8 +143,7 @@ def make_contig_plots(assembly):
 def make_N50_plots(barcode):
     d = []
     for assembly in barcode:
-        d.append([assembly.barcode, assembly.k_value, assembly.N50_all_contigs          
-        
+        d.append([assembly.barcode, assembly.k_value, assembly.N50_all_contigs            
     print(d)
     columns = ['barcode','k_value', 'N50']
     index = [1, 2, 3]
