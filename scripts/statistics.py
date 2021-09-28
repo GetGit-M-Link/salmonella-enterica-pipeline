@@ -187,7 +187,7 @@ for barcode in barcodes:
 with open("../data/" + "Analysis.md", 'w') as stats:
     for barcode in masterlist_of_assemblies:
         make_N50_plot(barcode)
-        stats.write(f"""<img src="../plots/" + {barcode} + "_N50.png" width="400"> \n """)
+        stats.write(f"""<img src="../plots/" + {barcode[0].barcode} + "_N50.png" width="400"> \n """)
         for assembly in barcode:
             stats.write(str(assembly))
             make_contig_plots(assembly)
