@@ -209,6 +209,7 @@ Decision for best assembly
 """
 best_assemblies = []
 for assembly_list in masterlist_of_assemblies:
+    print(assembly_list)
     best_assembly = ""
     sorted_assemblies = assembly_list.sort(key=lambda x: x.N50_all_contigs, reverse=True)
     print(sorted_assemblies)
