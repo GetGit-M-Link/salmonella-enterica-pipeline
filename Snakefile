@@ -6,7 +6,8 @@ def optional_input(filepath):
       return ""
 rule all:
     input:
-        expand("/data/assembled/{barcodes}/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"])
+        #expand("/data/assembled/{barcodes}/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"])
+        "data/Analysis.md"
 rule download_sr:
     output:
         "/data/short-reads/{barcodes}_1.fastq",
@@ -14,6 +15,16 @@ rule download_sr:
     threads: 6
     shell:
         "fasterq-dump {wildcards.barcodes} -O /data/short-reads/ -t /data/sra-tools-temp"
+rule adapter_trimming:
+    input:
+        expand("/data/short-reads/{barcodes}_{numero}.fastq",numero=[1,2])
+    output:
+        "/data/trimmed/{barcodes}_{numero}.fastq"   
+    shell:
+        """
+        cutadapt -a file:tools/adapter.fasta -A file:tools/adapter.fasta -o {output} {input} -j 0
+        """
+
 rule SPAdes:
     input:
         forward_1 = "/data/short-reads/{barcodes}_1.fastq",
