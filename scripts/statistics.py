@@ -126,12 +126,13 @@ def calculate_N50_bigger_300(list_of_lengths):
     return median
 
 """
-Decision for best assembly
+Load data from assembly directory
+and write analysis file
 
 """
-# Get assemblies (with different k's) for one barcode in the snakefile (this script is run for each barcode)
-# all_assemblies = get_assemblies(snakemake.input[0])
-dir_path = sys.argv[1]
+
+#dir_path = sys.argv[1]
+dir_path = snakemake.input[0]
 barcodes = get_barcodes(dir_path)
 # To save a list of assemblies for each barcode
 masterlist_of_assemblies = []
@@ -144,7 +145,10 @@ with open("../data/" + "Analysis.md", 'w') as stats:
             stats.write(str(assembly))
 
 
+"""
+Decision for best assembly
 
+"""
 
 
 
