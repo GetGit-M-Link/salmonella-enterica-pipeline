@@ -8,6 +8,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
+"""
+in the Assembly object all important informations are saved. Each assembly (each k-value of each barcode) is its own Assembly object
+"""
 
 class Assembly:
     def __init__(self, contigs_fasta_filename, log_filename, k_value, barcode):
