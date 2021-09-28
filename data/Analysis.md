@@ -5,7 +5,7 @@
         longest contig: 283747  
         N50 of all contigs: 72761.0  
         N50 of all contigs over 300 bp: 72761  
-<img src="../plots/SRR2075991_55.png" width="200"> 
+<img src="../plots/SRR2075991_55.png" width="400"> 
  
  # statistics analysis for barcode: SRR2075991 assembled with SPAdes with parameter k = auto  
         average contig length: 28736.869565217392  
