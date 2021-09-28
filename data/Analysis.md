@@ -1,4 +1,10 @@
 <img src="../plots/SRR2075991_N50.png" width="400"> 
+
+
+
+
+
+
  # statistics analysis for barcode: SRR2075991 assembled with SPAdes with parameter k = 55  
         average contig length: 16563.974842767297  
         total number of contigs: 318  
@@ -18,6 +24,12 @@
 <img src="../plots/SRR2075991_auto.png" width="400"> 
  
  <img src="../plots/SRR7828287_N50.png" width="400"> 
+
+
+
+
+
+
  # statistics analysis for barcode: SRR7828287 assembled with SPAdes with parameter k = 31  
         average contig length: 10239.719587628866  
         total number of contigs: 485  
@@ -46,6 +58,12 @@
 <img src="../plots/SRR7828287_auto.png" width="400"> 
  
  <img src="../plots/SRR1965341_N50.png" width="400"> 
+
+
+
+
+
+
  # statistics analysis for barcode: SRR1965341 assembled with SPAdes with parameter k = 31  
         average contig length: 3363.1139410187666  
         total number of contigs: 1492  
@@ -74,6 +92,12 @@
 <img src="../plots/SRR1965341_auto.png" width="400"> 
  
  <img src="../plots/SRR5584993_N50.png" width="400"> 
+
+
+
+
+
+
  # statistics analysis for barcode: SRR5584993 assembled with SPAdes with parameter k = 31  
         average contig length: 10143.620078740158  
         total number of contigs: 508  
