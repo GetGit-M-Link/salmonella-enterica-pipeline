@@ -33,7 +33,7 @@ rule SPAdes_untrimmed:
         forward_1 = ["/data/short-reads/{barcodes}_1.fastq".format(barcodes=barcodes) for barcodes in config["BARCODES"]],
         reverse_2 = ["/data/short-reads/{barcodes}_2.fastq".format(barcodes=barcodes) for barcodes in config["BARCODES"]]
     output:
-        "/data/assembled/{barcodes}/{value_of_k}/contigs.fasta"
+        "/data/assembled/{barcodes}_untrimmed/{value_of_k}/contigs.fasta"
     params:
         optional=optional_input("/data/short-reads/{barcodes}.fastq")    
     shell:
