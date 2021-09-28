@@ -17,9 +17,12 @@ rule download_sr:
         "fasterq-dump {wildcards.barcodes} -O /data/short-reads/ -t /data/sra-tools-temp"
 rule adapter_trimming:
     input:
-        expand("/data/short-reads/{barcodes}_{numero}.fastq",numero=[1,2])
+        "/data/short-reads/{barcodes}_1.fastq",
+        "/data/short-reads/{barcodes}_2.fastq"
+
     output:
-        "/data/trimmed/{barcodes}_{numero}.fastq"   
+        "/data/trimmed/{barcodes}_1.fastq",
+        "/data/trimmed/{barcodes}_2.fastq"
     shell:
         """
         cutadapt -a file:tools/adapter.fasta -A file:tools/adapter.fasta -o {output} {input} -j 0
