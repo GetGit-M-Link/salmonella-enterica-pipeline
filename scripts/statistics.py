@@ -211,7 +211,7 @@ best_assemblies = []
 for assembly_list in masterlist_of_assemblies:
     print(assembly_list)
     best_assembly = ""
-    sorted_assemblies = sorted(assembly_list(key=lambda x: x.N50_all_contigs, reverse=True)
+    sorted_assemblies = sorted(assembly_list(key=lambda x: x.N50_all_contigs, reverse=True))
     print(sorted_assemblies)
     """if sorted_assemblies[0].N50_all_contigs > sorted_assemblies[1].N50_all_contigs:
         best_assembly = sorted_assemblies[0].contigs_fasta_filename
