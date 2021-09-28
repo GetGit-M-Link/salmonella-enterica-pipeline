@@ -126,6 +126,17 @@ def calculate_N50_bigger_300(list_of_lengths):
     return median
 
 """
+plots
+
+"""
+def make_plots(assembly):
+    df = pd.Dataframe (assembly.contig_lengths, columns = ['contig_length'])
+
+
+
+
+
+"""
 Load data from assembly directory
 and write analysis file
 
@@ -145,6 +156,11 @@ with open("../data/" + "Analysis.md", 'w') as stats:
             stats.write(str(assembly))
 
 
+
+
+
+
+
 """
 Decision for best assembly
 
@@ -154,7 +170,4 @@ Decision for best assembly
 
 
 
-"""
-output
 
-"""
