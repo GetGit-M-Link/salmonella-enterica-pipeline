@@ -18,15 +18,15 @@ rule download_sr:
         "fasterq-dump {wildcards.barcodes} -O /data/short-reads/ -t /data/sra-tools-temp"
 rule adapter_trimming:
     input:
-        "/data/short-reads/{barcodes}_1.fastq",
-        "/data/short-reads/{barcodes}_2.fastq"
+        i_1 = "/data/short-reads/{barcodes}_1.fastq",
+        i_2 = "/data/short-reads/{barcodes}_2.fastq"
 
     output:
-        "/data/trimmed/{barcodes}_1.fastq",
-        "/data/trimmed/{barcodes}_2.fastq"
+        o_1 = "/data/trimmed/{barcodes}_1.fastq",
+        o_2 = "/data/trimmed/{barcodes}_2.fastq"
     shell:
         """
-        cutadapt -a file:tools/adapter.fasta -A file:tools/adapter.fasta -o {output} {input} -j 0
+        cutadapt -a file:tools/adapter.fasta -A file:tools/adapter.fasta -o {output.o_1} -p {output.o_2}  {input.i_1} {input.i_2} -j 0
         """
 rule SPAdes_untrimmed:
     input:
