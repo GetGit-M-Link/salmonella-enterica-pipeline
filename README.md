@@ -123,3 +123,23 @@ conda install seaborn
 ```
 ![DAg after scale up](dag-scale-up.svg)
 
+Cutadapt :
+ Parameters -a, -g, -b specify adapters to be removed from each read (or from the first read in a
+  pair if data is paired). If specified multiple times, only the best matching adapter is trimmed (but
+  see the --times option). When the special notation 'file:FILE' is used, adapter sequences are read
+  from the given FASTA file.
+
+ -a ADAPTER, --adapter ADAPTER
+                        Sequence of an adapter ligated to the 3' end (paired data: of the first read).
+                        The adapter and subsequent bases are trimmed. If a '$' character is appended
+                        ('anchoring'), the adapter is only found if it is a suffix of the read.
+-j CORES, --cores CORES
+                        Number of CPU cores to use. Use 0 to auto-detect. Default: 1
+Paired-end options:
+  The -A/-G/-B/-U options work like their -a/-b/-g/-u counterparts, but are applied to the second read
+  in each pair.
+
+  -A ADAPTER            3' adapter to be removed from second read in a pair.
+
+
+
