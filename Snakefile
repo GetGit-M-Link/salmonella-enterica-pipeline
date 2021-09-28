@@ -41,4 +41,4 @@ rule SPAdes_trimmed:
     output:
         "/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta"  
     shell:
-       "spades.py -k {wildcards.value_of_k} -1 {input.forward_1} -2 {input.reverse_2} -o /data/assembled/{wildcards.barcodes}/{wildcards.value_of_k}/
+       "spades.py -k {wildcards.value_of_k} -1 {input.forward_1} -2 {input.reverse_2} -o /data/assembled/{wildcards.barcodes}/{wildcards.value_of_k}/"
