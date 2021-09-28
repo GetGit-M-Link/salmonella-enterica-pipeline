@@ -6,8 +6,8 @@ def optional_input(filepath):
       return ""
 rule all:
     input:
-        expand("/data/assembled/{barcodes}_untrimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
-        expand("/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
+        #expand("/data/assembled/{barcodes}_untrimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
+        #expand("/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
         expand("/plots/{barcodes}_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"])
 rule download_sr:
     output:
