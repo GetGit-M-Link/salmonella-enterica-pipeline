@@ -41,7 +41,7 @@ class Assembly:
         longest contig: {self.longest_contig}  
         N50 of all contigs: {self.N50_all_contigs}  
         N50 of all contigs over 300 bp: {self.N50_contigs_over_300}  
-        ![contig_plot](../plots/{self.barcode}_{self.k_value}.png)\n """
+![contig_plot](../plots/{self.barcode}_{self.k_value}.png)\n """
 
 
 """
