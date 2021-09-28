@@ -138,7 +138,7 @@ def make_plots(assembly):
     df = pd.DataFrame (assembly.contig_lengths, columns = ['contig_length'])
     sns.histplot(data=df, x="contig_length", log_scale=True)
     plt.savefig("../plots/" + assembly.barcode + "_" + assembly.k_value)
-    plot.fig.clf()
+    plt.clf()
     
 
 
