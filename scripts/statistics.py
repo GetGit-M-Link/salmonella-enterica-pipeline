@@ -159,7 +159,7 @@ def make_N50_plot(barcode):
     )
     g.despine(left=True)
     g.set_axis_labels("", "N50")
-    g.legend.set_title("barcode")
+    g.legend.set_title("k")
     plt.savefig("../plots/" + assembly.barcode + "_N50")
     plt.clf()
 
