@@ -115,5 +115,8 @@ conda activate salmonella
 ```
 snakemake --cores 6
 ```
-
+write python script statistics.py in /scripts
+```
+conda install matplotlib
+```
 
