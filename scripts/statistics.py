@@ -149,7 +149,7 @@ def make_N50_plot(barcode):
         barcode = assembly.barcode
     data = {
         "k_values": k_values,
-        "N50s": N50s
+        "N50s": N50s,
         "barcode": barcode
     }
     df = pd.DataFrame(data)
