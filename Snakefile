@@ -38,14 +38,6 @@ rule SPAdes_untrimmed:
         optional=optional_input("/data/short-reads/{barcodes}.fastq")    
     shell:
        "spades.py -k {wildcards.value_of_k} -1 {input.forward_1} -2 {input.reverse_2} {params.optional} -o /data/assembled/{wildcards.barcodes}/{wildcards.value_of_k}/"
-rule SPAdes_trimmed:
-    input:
-        forward_1 = "/data/trimmed/{barcodes}_1.fastq",
-        reverse_2 = "/data/trimmed/{barcodes}_2.fastq"
-    output:
-        "/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta"  
-    shell:
-       "spades.py -k {wildcards.value_of_k} -1 {input.forward_1} -2 {input.reverse_2} -o /data/assembled/{wildcards.barcodes}/{wildcards.value_of_k}/"
 rule analysis:
     input:
         "/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",
