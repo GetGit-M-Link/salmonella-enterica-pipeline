@@ -45,3 +45,12 @@ rule SPAdes_trimmed:
         "/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta"  
     shell:
        "spades.py -k {wildcards.value_of_k} -1 {input.forward_1} -2 {input.reverse_2} -o /data/assembled/{wildcards.barcodes}/{wildcards.value_of_k}/"
+rule analysis:
+    input:
+        "/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",
+        "/data/assembled/{barcodes}/{value_of_k}/contigs.fasta"
+    output:
+        "data/Analysis.md"
+    shell:
+        python3 scripts/statistics.py /data/assembled/
+
