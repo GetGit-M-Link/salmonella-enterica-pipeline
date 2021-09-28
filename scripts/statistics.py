@@ -135,6 +135,8 @@ plots
 """
 def make_plots(assembly):
     df = pd.Dataframe (assembly.contig_lengths, columns = ['contig_length'])
+    sns.histplot(data=df, x="contig_length")
+    plt.savefig("../plots/" + assembly.barcode + "_" + assembly.k_value)
 
 
 
@@ -158,6 +160,7 @@ with open("../data/" + "Analysis.md", 'w') as stats:
     for barcode in masterlist_of_assemblies:
         for assembly in barcode:
             stats.write(str(assembly))
+            make_plots(assembly)
 
 
 
