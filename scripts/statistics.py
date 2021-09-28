@@ -140,18 +140,26 @@ def make_contig_plots(assembly):
     plt.savefig("../plots/" + assembly.barcode + "_" + assembly.k_value)
     plt.clf()
 
-def make_N50_plots(barcode):
+def make_N50_plot(barcode):
     k_values = []
     N50s = []
     for assembly in barcode:
         k_values.append(assembly.k_value)
         N50s.append(assembly.N50_all_contigs)
+        barcode = assembly.barcode
     data = {
         "k_values": k_values,
         "N50s": N50s
+        "barcode": barcode
     }
     df = pd.DataFrame(data)
-    sns.barplot(data=df, x="N50s",hue="k_values")
+    g = sns.catplot(data=df, kind="bar",
+    x="barcode", y="N50s", hue="k_values",
+    ci="sd", palette="dark", alpha=.6, height=6
+    )
+    g.despine(left=True)
+    g.set_axis_labels("", "N50")
+    g.legend.set_title("barcode")
     plt.savefig("../plots/" + assembly.barcode + "_N50")
     plt.clf()
 
@@ -181,7 +189,7 @@ with open("../data/" + "Analysis.md", 'w') as stats:
         for assembly in barcode:
             stats.write(str(assembly))
             make_contig_plots(assembly)
-        make_N50_plots(barcode)
+        make_N50_plot(barcode)
 
 
 
