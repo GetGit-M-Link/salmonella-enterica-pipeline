@@ -150,6 +150,7 @@ def make_N50_plots(barcode):
                 'N50': assembly.N50_all_contigs
             }
         )
+    print(d)
     pd.DataFrame(d)
     sns.histplot(data=d, x='N50', log_scale=True)
     plt.savefig("../plots/" + assembly.barcode + "_N50")
