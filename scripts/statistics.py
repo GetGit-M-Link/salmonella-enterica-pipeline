@@ -4,6 +4,10 @@ Setup
 """
 import os
 import sys
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+
 
 class Assembly:
     def __init__(self, contigs_fasta_filename, log_filename, k_value, barcode):
