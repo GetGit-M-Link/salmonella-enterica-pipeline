@@ -146,8 +146,7 @@ def make_N50_plots(barcode):
         d.append([assembly.barcode, assembly.k_value, assembly.N50_all_contigs])          
     print(d)
     columns = ['barcode','k_value', 'N50']
-    index = [1, 2, 3]
-    pd.DataFrame(d, index, columns)
+    pd.DataFrame(d, columns)
     sns.histplot(data=d, x='N50', log_scale=True)
     plt.savefig("../plots/" + assembly.barcode + "_N50")
     plt.clf()
