@@ -50,7 +50,7 @@ rule analysis:
         "/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",
         "/data/assembled/{barcodes}/{value_of_k}/contigs.fasta"
     output:
-        "data/Analysis.md"
+        "/plots/{barcodes}_{value_of_k}.png"
     shell:
         "python3 scripts/statistics.py /data/assembled/"
 
