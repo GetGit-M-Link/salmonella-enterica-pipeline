@@ -12,7 +12,8 @@
         longest contig: 283747  
         N50 of all contigs: 72761.0  
         N50 of all contigs over 300 bp: 72761 
-<img src="../plots/SRR2075991_55.png" width="400"> 
+<img src="../plots/SRR2075991_55.png" width="400">
+ 
 
 
 
@@ -33,7 +34,8 @@
         longest contig: 412932  
         N50 of all contigs: 142689.0  
         N50 of all contigs over 300 bp: 142689.0 
-<img src="../plots/SRR2075991_auto.png" width="400"> 
+<img src="../plots/SRR2075991_auto.png" width="400">
+ 
 
 
 
@@ -61,7 +63,8 @@
         longest contig: 288956  
         N50 of all contigs: 105498.0  
         N50 of all contigs over 300 bp: 105498.0 
-<img src="../plots/SRR7828287_31.png" width="400"> 
+<img src="../plots/SRR7828287_31.png" width="400">
+ 
 
 
 
@@ -82,7 +85,8 @@
         longest contig: 340335  
         N50 of all contigs: 156381  
         N50 of all contigs over 300 bp: 156381 
-<img src="../plots/SRR7828287_55.png" width="400"> 
+<img src="../plots/SRR7828287_55.png" width="400">
+ 
 
 
 
@@ -103,7 +107,8 @@
         longest contig: 418725  
         N50 of all contigs: 156381  
         N50 of all contigs over 300 bp: 156381 
-<img src="../plots/SRR7828287_auto.png" width="400"> 
+<img src="../plots/SRR7828287_auto.png" width="400">
+ 
 
 
 
@@ -131,7 +136,8 @@
         longest contig: 321983  
         N50 of all contigs: 96827.0  
         N50 of all contigs over 300 bp: 103861 
-<img src="../plots/SRR1965341_31.png" width="400"> 
+<img src="../plots/SRR1965341_31.png" width="400">
+ 
 
 
 
@@ -152,7 +158,8 @@
         longest contig: 322089  
         N50 of all contigs: 110300.0  
         N50 of all contigs over 300 bp: 110300.0 
-<img src="../plots/SRR1965341_55.png" width="400"> 
+<img src="../plots/SRR1965341_55.png" width="400">
+ 
 
 
 
@@ -173,7 +180,8 @@
         longest contig: 322089  
         N50 of all contigs: 147418  
         N50 of all contigs over 300 bp: 147418.0 
-<img src="../plots/SRR1965341_auto.png" width="400"> 
+<img src="../plots/SRR1965341_auto.png" width="400">
+ 
 
 
 
@@ -201,7 +209,8 @@
         longest contig: 214128  
         N50 of all contigs: 83784  
         N50 of all contigs over 300 bp: 90443 
-<img src="../plots/SRR5584993_31.png" width="400"> 
+<img src="../plots/SRR5584993_31.png" width="400">
+ 
 
 
 
@@ -222,7 +231,8 @@
         longest contig: 251418  
         N50 of all contigs: 73507  
         N50 of all contigs over 300 bp: 73507.0 
-<img src="../plots/SRR5584993_55.png" width="400"> 
+<img src="../plots/SRR5584993_55.png" width="400">
+ 
 
 
 
