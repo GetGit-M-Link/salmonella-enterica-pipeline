@@ -215,13 +215,13 @@ for assembly_list in masterlist_of_assemblies:
     if sorted_assemblies[0].N50_all_contigs > sorted_assemblies[1].N50_all_contigs:
         best_assembly = sorted_assemblies[0].contigs_fasta_filename
     else:
-        print(sorted_assemblies[0].N50_all_contigs + "vs. " + sorted_assemblies[1].N50_all_contigs)
+        print(str(sorted_assemblies[0].N50_all_contigs) + "vs. " + str(sorted_assemblies[1].N50_all_contigs))
         if sorted_assemblies[0].longest_contig > sorted_assemblies[1].longest_contig:
             best_assembly = sorted_assemblies[0].contigs_fasta_filename
         else:
             best_assembly = sorted_assemblies[1].contigs_fasta_filename
     best_assemblies.append(best_assembly)
-print(best_assemblies)
+print(str(best_assemblies))
 
 
 
