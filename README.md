@@ -144,5 +144,10 @@ Paired-end options:
 
 ![DAg after trim](dag-trimmed_after_rerun.svg)
 
+### Long read sequencing
+
+-According to the [sequence read archive](https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR8902592) the provided long reads are single ended.
+- Since the already implemented rule was for downloading paired ended reads, I should write a new one
+
 
 
