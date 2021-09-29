@@ -1,4 +1,8 @@
- configfile: "config.yaml"
+wildcards_constraints:
+  barcodes="SRR\d+"
+#restrains barcodes to only consist of SRR + numbers
+
+configfile: "config.yaml"
 def optional_input(filepath):
    if os.path.exists(filepath):
       return "-s " + filepath
