@@ -15,7 +15,7 @@ rule all:
         #expand("/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
         expand("/plots/{barcodes}_untrimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
         expand("/plots/{barcodes}_trimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
-        expand("/data/assembled/{long_barcodes}/long_read/contigs.fasta",long_barcodes=config["LONG_BARCODES"])
+        expand("/data/assembled/{long_barcodes}/miniasm/contigs.fasta",long_barcodes=config["LONG_BARCODES"])
 rule download_sr_paired:
     output:
         "/data/short-reads/{barcodes}_1.fastq",
@@ -25,41 +25,41 @@ rule download_sr_paired:
         "fasterq-dump {wildcards.barcodes} -O /data/short-reads/ -t /data/sra-tools-temp"
 rule download_sr_single:
     output:
-        "/data/short-reads_single/SRR8902592.fastq"
+        "/data/short-reads_single/{long_barcodes}.fastq"
     threads: 6
     shell:
-        "fasterq-dump SRR8902592 -O /data/short-reads_single/ -t /data/sra-tools-temp"
+        "fasterq-dump {wildcards.long_barcodes} -O /data/short-reads_single/ -t /data/sra-tools-temp"
 rule long_read_preprocess:
     input:
-        "/data/short-reads_single/{barcodes}.fastq"
+        "/data/short-reads_single/{long_barcodes}.fastq"
     output:
-        "/data/long_read_preprocessed/{barcodes}.paf.gz"
+        "/data/long_read_preprocessed/{long_barcodes}.paf.gz"
     log:
-        "logs/minimap2/{barcode}.log"
+        "logs/minimap2/{long_barcodes}.log"
     shell:
         """
         minimap2 -x ava-ont -t8 {input} {input} | gzip -1 > {output}
         """
 rule assemble_long_reads:
     input:
-        preprocessed="/data/long_read_preprocessed/{barcodes}.paf.gz",
-        raw_reads="/data/short-reads_single/{barcodes}.fastq"
+        preprocessed="/data/long_read_preprocessed/{long_barcodes}.paf.gz",
+        raw_reads="/data/short-reads_single/{long_barcodes}.fastq"
     output:
-        "/data/assembled/{barcodes}/long_read/contigs.gfa"
+        "/data/assembled/{long_barcodes}/miniasm/contigs.gfa"
         
     log:
-        "logs/miniasm/{barcodes}.log"
+        "logs/miniasm/{long_barcodes}.log"
     shell:
         """
         miniasm -f {input.raw_reads} {input.preprocessed} > {output}
         """
 rule gfa_to_fasta:
     input:
-        "/data/assembled/{barcodes}/long_read/contigs.gfa"
+        "/data/assembled/{long_barcodes}/miniasm/contigs.gfa"
     output:
-        "/data/assembled/{barcodes}/long_read/contigs.fasta"
+        "/data/assembled/{long_barcodes}/miniasm/contigs.fasta"
     log:
-        "logs/awk/{barcode}.log"
+        "logs/awk/{long_barcodes}.log"
     shell:
         """
         awk '/^S/{{print \">\"$2"\\n\"$3}}' {input} | fold > {output}
