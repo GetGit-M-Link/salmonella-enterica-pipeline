@@ -222,10 +222,10 @@ with open("data/" + "Analysis.md", 'w') as stats:
 
 
 
-"""
+
 Decision for best assembly
 
-"""
+
 best_assemblies = []
 for assembly_list in masterlist_of_assemblies:
     best_assembly = ""
