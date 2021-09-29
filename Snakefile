@@ -1,4 +1,4 @@
-wildcards_constraints:
+wildcard_constraints:
   barcodes="SRR\d+"
 #restrains barcodes to only consist of SRR + numbers
 
