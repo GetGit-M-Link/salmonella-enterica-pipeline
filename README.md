@@ -122,7 +122,7 @@ conda install pandas
 conda install seaborn
 ```
 ![DAg after scale up](dag-scale-up.svg)
-
+```
 Cutadapt :
  Parameters -a, -g, -b specify adapters to be removed from each read (or from the first read in a
   pair if data is paired). If specified multiple times, only the best matching adapter is trimmed (but
@@ -140,6 +140,9 @@ Paired-end options:
   in each pair.
 
   -A ADAPTER            3' adapter to be removed from second read in a pair.
+  ```
+
+![DAg after trim](dag-trimmed_after_rerun.svg)
 
 
 
