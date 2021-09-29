@@ -37,7 +37,18 @@ class Assembly:
         self.barcode = barcode
         self.k_value = k_value
     def __str__(self):
-        return f"""# statistics analysis for barcode: {self.barcode} assembled with SPAdes with parameter k = {self.k_value}  
+        if self.k_value == "miniasm":
+            return f"""# statistics analysis for barcode: {self.barcode} assembled with {self.k_value}  (long read)
+        average contig length: {self.avg_contigs_length}  
+        total number of contigs: {self.totl_nr_contigs}  
+        shortest contig: {self.shortest_contig}  
+        longest contig: {self.longest_contig}  
+        N50 of all contigs: {self.N50_all_contigs}  
+        N50 of all contigs over 300 bp: {self.N50_contigs_over_300} 
+<img src="../plots/{self.barcode}_{self.k_value}.png" width="400">
+ \n\n\n\n\n\n\n\n\n\n\n\n\n\n """
+        else:
+            return f"""# statistics analysis for barcode: {self.barcode} assembled with SPAdes with parameter k = {self.k_value}  (short read)
         average contig length: {self.avg_contigs_length}  
         total number of contigs: {self.totl_nr_contigs}  
         shortest contig: {self.shortest_contig}  
@@ -147,9 +158,12 @@ def make_N50_plot(barcode):
     k_values = []
     N50s = []
     for assembly in barcode:
-        k_values.append(assembly.k_value)
-        N50s.append(assembly.N50_all_contigs)
-        barcode = assembly.barcode
+        if assembly.k_value:
+            break
+        else:
+            k_values.append(assembly.k_value)
+            N50s.append(assembly.N50_all_contigs)
+            barcode = assembly.barcode
     data = {
         "k_values": k_values,
         "N50s": N50s,
