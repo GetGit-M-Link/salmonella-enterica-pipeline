@@ -14,7 +14,7 @@ rule all:
         #expand("/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
         expand("/plots/{barcodes}_untrimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
         expand("/plots/{barcodes}_trimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
-        "/data/short-reads_single/SRR8902592.fastq"
+        expand("/data/assembled/{long_barcodes}/long_read/contigs.fasta",long_barcodes=config["LONG_BARCODES"]
 rule download_sr_paired:
     output:
         "/data/short-reads/{barcodes}_1.fastq",
