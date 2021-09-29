@@ -58,7 +58,7 @@ def get_barcodes(dir_path):
             barcodes.append(item.name)
     return barcodes
     
-
+#get_assemblies(dir_path + barcode))
 def get_assemblies(assembly_path):
     assemblies = []
     barcode = assembly_path.split("assembled/")[1].split("/")[0]
