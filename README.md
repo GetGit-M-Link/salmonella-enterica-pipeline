@@ -149,5 +149,9 @@ Paired-end options:
 -According to the [sequence read archive](https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR8902592) the provided long reads are single ended.
 - Since the already implemented rule was for downloading paired ended reads, I should write a new one
 
+Preprocess:
+> Overlap for PacBio reads (or use "-x ava-ont" for nanopore read overlapping)  
+>minimap2/minimap2 -x ava-pb -t8 pb-reads.fq pb-reads.fq | gzip -1 > reads.paf.gz
+
 
 
