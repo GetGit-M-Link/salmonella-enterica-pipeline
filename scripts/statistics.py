@@ -206,6 +206,9 @@ for barcode in barcodes:
 
 with open("data/" + "Analysis.md", 'w') as stats:
     for barcode in masterlist_of_assemblies:
+        for assembly in barcode:
+            print(str(assembly))
+        """
         make_N50_plot(barcode)
         stats.write(f"""<img src="../plots/{barcode[0].barcode}_N50.png" width="400"> \n\n\n\n\n\n\n """)
         for assembly in barcode:
@@ -242,6 +245,6 @@ with open("data/" + "best_assemblies.txt", 'w') as out_best_assemblies:
 
 
 
-
+"""
 
 
