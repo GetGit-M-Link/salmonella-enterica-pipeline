@@ -13,14 +13,22 @@ rule all:
         #expand("/data/assembled/{barcodes}_untrimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
         #expand("/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
         expand("/plots/{barcodes}_untrimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
-        expand("/plots/{barcodes}_trimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"])
-rule download_sr:
+        expand("/plots/{barcodes}_trimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
+        "/data/short-reads_single/SRR8902592.fastq"
+rule download_sr_paired:
     output:
         "/data/short-reads/{barcodes}_1.fastq",
         "/data/short-reads/{barcodes}_2.fastq"
     threads: 6
     shell:
         "fasterq-dump {wildcards.barcodes} -O /data/short-reads/ -t /data/sra-tools-temp"
+rule download_sr_single:
+    output:
+        "/data/short-reads_single/SRR8902592.fastq"
+    threads: 6
+    shell:
+        "fasterq-dump SRR8902592 -O /data/short-reads_single/ -t /data/sra-tools-temp"
+
 rule adapter_trimming:
     input:
         i_1 = "/data/short-reads/{barcodes}_1.fastq",
