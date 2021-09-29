@@ -1,5 +1,6 @@
 wildcard_constraints:
-  barcodes="SRR\d+"
+  barcodes="SRR\d+",
+  long_barcodes="SRR\d+"
 #restrains barcodes to only consist of SRR + numbers
 
 configfile: "config.yaml"
