@@ -28,6 +28,18 @@ rule download_sr_single:
     threads: 6
     shell:
         "fasterq-dump SRR8902592 -O /data/short-reads_single/ -t /data/sra-tools-temp"
+rule long_read_preprocess:
+    input:
+        "/data/short-reads_single/{barcodes}.fastq"
+    output:
+        "/data/long_read_preprocessed/{barcodes}.paf.gz"
+    log:
+        "logs/minimap2/{barcode}.log"
+    shell:
+        """
+        minimap2 -x ava-ont -t8 {input} {input} | gzip -1 > {output}
+        """
+
 
 rule adapter_trimming:
     input:
