@@ -153,5 +153,10 @@ Preprocess:
 > Overlap for PacBio reads (or use "-x ava-ont" for nanopore read overlapping)  
 >minimap2/minimap2 -x ava-pb -t8 pb-reads.fq pb-reads.fq | gzip -1 > reads.paf.gz
 
+```
+conda install minimap2     (2.22)
+conda install minimap2     (miniasm-0.3_r179)
+
+
 
 
