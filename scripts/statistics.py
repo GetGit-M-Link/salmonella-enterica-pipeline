@@ -141,7 +141,7 @@ plots
 def make_contig_plots(assembly):
     df = pd.DataFrame (assembly.contig_lengths, columns = ['contig_length'])
     sns.histplot(data=df, x="contig_length", log_scale=True)
-    plt.savefig("/plots/" + assembly.barcode + "_" + assembly.k_value)
+    plt.savefig("plots/" + assembly.barcode + "_" + assembly.k_value)
     plt.clf()
 
 def make_N50_plot(barcode):
@@ -164,7 +164,7 @@ def make_N50_plot(barcode):
     g.despine(left=True)
     g.set_axis_labels("", "N50")
     g.legend.set_title("k")
-    plt.savefig("/plots/" + assembly.barcode + "_N50")
+    plt.savefig("plots/" + assembly.barcode + "_N50")
     plt.clf()
 
     
@@ -188,7 +188,7 @@ masterlist_of_assemblies = []
 for barcode in barcodes:
     masterlist_of_assemblies.append(get_assemblies(dir_path + barcode))
 
-with open("/data/" + "Analysis.md", 'w') as stats:
+with open("data/" + "Analysis.md", 'w') as stats:
     for barcode in masterlist_of_assemblies:
         make_N50_plot(barcode)
         stats.write(f"""<img src="../plots/{barcode[0].barcode}_N50.png" width="400"> \n\n\n\n\n\n\n """)
@@ -221,7 +221,7 @@ for assembly_list in masterlist_of_assemblies:
         else:
             best_assembly = sorted_assemblies[1].contigs_fasta_filename
     best_assemblies.append(best_assembly)
-with open("/data/" + "best_assemblies.txt", 'w') as out_best_assemblies:
+with open("data/" + "best_assemblies.txt", 'w') as out_best_assemblies:
     out_best_assemblies.write(str(best_assemblies))
 
 
