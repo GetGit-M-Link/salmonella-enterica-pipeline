@@ -13,8 +13,9 @@ rule all:
     input:
         #expand("/data/assembled/{barcodes}_untrimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
         #expand("/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
-        expand("/plots/{barcodes}_untrimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
-        expand("/plots/{barcodes}_trimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
+        expand("plots/{barcodes}_untrimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
+        expand("plots/{barcodes}_trimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
+        expand("plots/{long_barcodes}_miniasm.png",long_barcodes=config["LONG_BARCODES"]),
         expand("/data/assembled/{long_barcodes}/miniasm/contigs.fasta",long_barcodes=config["LONG_BARCODES"])
 rule download_sr_paired:
     output:
@@ -99,8 +100,8 @@ rule analysis:
         expand("/data/assembled/{barcodes}_untrimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
         expand("/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
     output:
-        expand("/plots/{barcodes}_untrimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
-        expand("/plots/{barcodes}_trimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"])
+        expand("plots/{barcodes}_untrimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
+        expand("plots/{barcodes}_trimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"])
     shell:
         "python3 scripts/statistics.py /data/assembled/"
 
