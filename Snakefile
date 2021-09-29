@@ -39,8 +39,30 @@ rule long_read_preprocess:
         """
         minimap2 -x ava-ont -t8 {input} {input} | gzip -1 > {output}
         """
-
-
+rule assemble_long_reads:
+    input:
+        preprocessed="/data/long_read_preprocessed/{barcodes}.paf.gz",
+        raw_reads="/data/short-reads_single/{barcodes}.fastq"
+    output:
+        "/data/assembled/{barcodes}/long_read/contigs.gfa"
+        
+    log:
+        "logs/miniasm/{barcodes}.log"
+    shell:
+        """
+        miniasm -f {input.raw_reads} {input.preprocessed} > {output}
+        """
+rule gfa_to_fasta:
+    input:
+        "/data/assembled/{barcodes}/long_read/contigs.gfa"
+    output:
+        "/data/assembled/{barcodes}/long_read/contigs.fasta"
+    log:
+        "logs/awk/{barcode}.log"
+    shell:
+        """
+        awk '/^S/{{print \">\"$2"\\n\"$3}}' {input} | fold > {output}
+        """
 rule adapter_trimming:
     input:
         i_1 = "/data/short-reads/{barcodes}_1.fastq",
