@@ -180,8 +180,8 @@ and write analysis file
 
 """
 
-#dir_path = sys.argv[1]
-dir_path = snakemake.input[0]
+dir_path = sys.argv[1]
+#dir_path = snakemake.input[0]
 barcodes = get_barcodes(dir_path)
 # To save a list of assemblies for each barcode
 masterlist_of_assemblies = []
