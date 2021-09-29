@@ -158,6 +158,9 @@ def make_N50_plot(barcode):
     k_values = []
     N50s = []
     for assembly in barcode:
+        print(assembly.k_value)
+
+"""
         if assembly.k_value=="miniasm":
             break
         else:
@@ -180,7 +183,7 @@ def make_N50_plot(barcode):
     plt.savefig("plots/" + assembly.barcode + "_N50")
     plt.clf()
 
-    
+ """   
     
 
 
