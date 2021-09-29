@@ -59,9 +59,8 @@ def get_barcodes(dir_path):
     return barcodes
     
 #get_assemblies(dir_path + barcode))
-def get_assemblies(assembly_path):
+def get_assemblies(assembly_path, barcode):
     assemblies = []
-    barcode = assembly_path.split("assembled/")[1].split("/")[0]
     for item in os.scandir(assembly_path):
         if item.is_dir():
             contigs_file = assembly_path + "/" + item.name + "/contigs.fasta"
@@ -186,7 +185,7 @@ barcodes = get_barcodes(dir_path)
 # To save a list of assemblies for each barcode
 masterlist_of_assemblies = []
 for barcode in barcodes:
-    masterlist_of_assemblies.append(get_assemblies(dir_path + barcode))
+    masterlist_of_assemblies.append(get_assemblies(dir_path + barcode, barcode))
 
 with open("data/" + "Analysis.md", 'w') as stats:
     for barcode in masterlist_of_assemblies:
