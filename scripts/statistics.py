@@ -52,7 +52,7 @@ class AssemblyLong:
         self.barcode = barcode
         
     def __str__(self):
-        return f"""# statistics analysis for barcode: {self.barcode} assembled with SPAdes with parameter k = {self.k_value}  
+        return f"""# statistics analysis for barcode: {self.barcode} Nanopore long read assembled with miniasm
         average contig length: {self.avg_contigs_length}  
         total number of contigs: {self.totl_nr_contigs}  
         shortest contig: {self.shortest_contig}  
@@ -92,8 +92,6 @@ def parse_long_assemblies(assembly_path, barcode):
     assemblies = []
     contigs_file = assembly_path + "/contigs.fasta"
     gfa_file = assembly_path + "/contigs.gfa"
-    print(contigs_file)
-    print(gfa_file)
     if os.path.exists(contigs_file) and os.path.exists(gfa_file):
         assemblies.append(AssemblyLong(contigs_file, gfa_file, barcode))
     return assemblies
