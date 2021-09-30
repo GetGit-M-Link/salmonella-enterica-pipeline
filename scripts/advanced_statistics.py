@@ -10,6 +10,7 @@ ci="sd", palette="dark", alpha=.6, height=6
 )
 g.despine(left=True)
 g.set_axis_labels("", "N50")
+plt.xticks(rotation=45)
 plt.savefig("plots/advanced/N50")
 plt.clf()
 
@@ -19,6 +20,7 @@ ci="sd", palette="dark", alpha=.6, height=6
 )
 g.despine(left=True)
 g.set_axis_labels("", "assemblylength")
+plt.xticks(rotation=45)
 plt.savefig("plots/advanced/assemblylength")
 plt.clf()
 
@@ -28,6 +30,7 @@ ci="sd", palette="dark", alpha=.6, height=6
 )
 g.despine(left=True)
 g.set_axis_labels("", "numberofcontigs")
+plt.xticks(rotation=45)
 plt.savefig("plots/advanced/numberofcontigs")
 plt.clf()
 
