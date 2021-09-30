@@ -90,8 +90,8 @@ def parse_short_assemblies(assembly_path, barcode):
 
 def parse_long_assemblies(assembly_path, barcode):
     assemblies = []
-    contigs_file = assembly_path + "/" + barcode + "/contigs.fasta"
-    gfa_file = assembly_path + "/" + barcode + "/contigs.gfa"
+    contigs_file = assembly_path + "/contigs.fasta"
+    gfa_file = assembly_path + "/contigs.gfa"
     print(contigs_file)
     print(gfa_file)
     if os.path.exists(contigs_file) and os.path.exists(gfa_file):
