@@ -10,7 +10,6 @@ ci="sd", palette="dark", alpha=.6, height=6
 )
 g.despine(left=True)
 g.set_axis_labels("", "N50")
-g.legend.set_title("k")
 plt.savefig("plots/advanced/N50")
 plt.clf()
 
@@ -20,7 +19,6 @@ ci="sd", palette="dark", alpha=.6, height=6
 )
 g.despine(left=True)
 g.set_axis_labels("", "assemblylength")
-g.legend.set_title("k")
 plt.savefig("plots/advanced/assemblylength")
 plt.clf()
 
@@ -30,7 +28,6 @@ ci="sd", palette="dark", alpha=.6, height=6
 )
 g.despine(left=True)
 g.set_axis_labels("", "numberofcontigs")
-g.legend.set_title("k")
 plt.savefig("plots/advanced/numberofcontigs")
 plt.clf()
 
