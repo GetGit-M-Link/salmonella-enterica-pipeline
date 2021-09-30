@@ -217,7 +217,7 @@ dir_path_long = sys.argv[2]
 #dir_path = snakemake.input[0]
 barcodes_short = get_barcodes(dir_path_short)
 barcodes_long = get_barcodes(dir_path_long)
-print(barcode_long)
+print(barcodes_long)
 # To save a list of assemblies for each barcode
 masterlist_of_short_assemblies = []
 masterlist_of_long_assemblies = []
