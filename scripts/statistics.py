@@ -27,6 +27,7 @@ class AssemblyShort:
         self.N50_contigs_over_300 = calculate_N50_bigger_300(self.contig_lengths)
         self.barcode = barcode
         self.k_value = k_value
+        self.plot = f"""<img src="../plots/{self.barcode}_{self.k_value}.png" width="400">"""
     def __str__(self):
         return f"""
 |statistics analysis for barcode: {self.barcode} assembled with SPAdes with parameter k = {self.k_value} | plot
@@ -228,8 +229,14 @@ with open("data/" + "Analysis.md", 'w') as stats:
     for barcode in masterlist_of_short_assemblies:
         make_N50_plot(barcode)
         stats.write(f"""<img src="../plots/{barcode[0].barcode}_N50.png" width="400"> \n\n\n\n\n\n\n """)
-        for assembly in barcode:
-            stats.write(str(assembly))
+        stats.write(f"""
+#### statistics analysis for barcode: {barcode[0].barcode}           
+|k = {barcode[0].k_value} | k = {barcode[1].k_value} | k = {barcode[2].k_value} | 
+|-------------------------|--------------------------|--------------------------|
+|{str({barcode[0])}       | {str({barcode[0])}       |{str({barcode[0])}        |
+|-------------------------|--------------------------|--------------------------|   
+| {assembly.plot}                                                               |
+""")
             make_contig_plots(assembly, ("plots/" + assembly.barcode + "_" + assembly.k_value))
     for barcode in masterlist_of_long_assemblies:
         for assembly in barcode:
