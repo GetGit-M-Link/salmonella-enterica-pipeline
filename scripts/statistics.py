@@ -228,9 +228,7 @@ with open("data/" + "Analysis.md", 'w') as stats:
 | k  |statistics| plot   | 
 |-------------------------|--------------------------|--------------------------|        
 |{barcode[0].k_value} |{str(barcode[0])}| {barcode[0].plot} |
-|-------------------------|--------------------------|--------------------------|
 |{barcode[1].k_value}| {str(barcode[1])} | {barcode[1].plot}  |                                  
-|-------------------------|--------------------------|--------------------------|   
 | {barcode[2].k_value} |{str(barcode[2])} |{barcode[2].plot}    |                                                                                     
 """)
         for assembly in barcode:
