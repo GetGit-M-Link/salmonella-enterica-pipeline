@@ -9,8 +9,7 @@
 #### statistics analysis for barcode: SRR1965341_untrimmed  
 | 1|2 | 3|
 |-------------------------|--------------------------|--------------------------|
-|k = 31 | average contig length: 3363.1139410187666 <br> total number of contigs: 1492 <br>shortest contig: 32<br>longest contig: 321983<br>N50 of all contigs: 96827.0<br>N50 of all contigs over 300 bp: 103861 | |
-|    |     | <img src="../plots/SRR1965341_untrimmed_31.png" width="400"> |
+|k = 31 | average contig length: 3363.1139410187666 <br> total number of contigs: 1492 <br>shortest contig: 32<br>longest contig: 321983<br>N50 of all contigs: 96827.0<br>N50 of all contigs over 300 bp: 103861 | <img src="../plots/SRR1965341_untrimmed_31.png" width="400">  |       
 |-------------------------|--------------------------|--------------------------|
 
 
