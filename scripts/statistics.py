@@ -237,7 +237,8 @@ with open("data/" + "Analysis.md", 'w') as stats:
 |-------------------------|--------------------------|--------------------------|   
 | {barcode[0].plot}      | {barcode[0].plot}          |                         |                                                            
 """)
-        make_contig_plots(assembly, ("plots/" + assembly.barcode + "_" + assembly.k_value))
+        for assembly in barcode:
+            make_contig_plots(assembly, ("plots/" + assembly.barcode + "_" + assembly.k_value))
     for barcode in masterlist_of_long_assemblies:
         for assembly in barcode:
             stats.write(str(assembly))
