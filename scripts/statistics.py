@@ -119,7 +119,7 @@ def get_contig_lengths_short(file):
         lengths.append(int(length.split("_")[0]))
     return lengths
 
-get_contig_lengths_long(contigs_fasta_filename):
+def get_contig_lengths_long(contigs_fasta_filename):
     lengths = []
     for record in SeqIO.parse(contigs_fasta_filename, "fasta"):
         length.append(len(record))
