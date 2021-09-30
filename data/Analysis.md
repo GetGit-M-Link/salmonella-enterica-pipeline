@@ -1,11 +1,5 @@
 <img src="../plots/SRR1965341_untrimmed_N50.png" width="400"> 
 
-
-
-
-
-
- 
 #### statistics analysis for barcode: SRR1965341_untrimmed           
 |k = 31 |average contig length: 3363.1139410187666|                                                     
 |total number of contigs: 1492 |                                                       
@@ -15,11 +9,11 @@
 |N50 of all contigs over 300 bp: 103861| <img src="../plots/SRR1965341_untrimmed_31.png" width="400">
 |-------------------------|--------------------------|--------------------------|
 |k = 55 |average contig length: 15548.29906542056|                                                     
-|total number of contigs: 321 |                                                       
-|shortest contig: 56         |                                                       
-|longest contig: 322089           |                                                       
-|<N50 of all contigs: 110300.0      |                                                        
-|N50 of all contigs over 300 bp: 110300.0| <img src="../plots/SRR1965341_untrimmed_55.png" width="400">                                    
+|       |total number of contigs: 321 |                                                       
+|        |shortest contig: 56         |                                                       
+|        |longest contig: 322089           |                                                       
+|        |<N50 of all contigs: 110300.0      |                                                        
+|        |N50 of all contigs over 300 bp: 110300.0| <img src="../plots/SRR1965341_untrimmed_55.png"      width="400">                                    
 |-------------------------|--------------------------|--------------------------|   
 | k = auto |average contig length: 15843.787301587301|                                                     
 |total number of contigs: 315 |                                                       
