@@ -218,7 +218,8 @@ dir_path_long = sys.argv[2]
 barcodes_short = get_barcodes(dir_path_short)
 barcodes_long = get_barcodes(dir_path_long)
 # To save a list of assemblies for each barcode
-masterlist_of_assemblies = []
+masterlist_of_short_assemblies = []
+masterlist_of_long_assemblies = []
 for barcode in barcodes_short:
     masterlist_of_short_assemblies.append(parse_short_assemblies(dir_path_short + barcode, barcode))
 for barcode in barcodes_long:
