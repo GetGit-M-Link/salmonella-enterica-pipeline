@@ -1,5 +1,5 @@
 #### statistics analysis for barcode: SRR1965341_untrimmed 
-|plot|
+|N50|
 |---|  
 |<img src="../plots/SRR1965341_untrimmed_N50.png" width="400">|
 
