@@ -227,7 +227,7 @@ with open("data/" + "Analysis.md", 'w') as stats:
     for barcode in masterlist_of_long_assemblies:
         for assembly in barcode:
             stats.write(f"""
-#### statistics analysis for barcode: barcode[0].barcode Nanopore long read assembled with miniasm 
+#### statistics analysis for barcode: assembly.barcode Nanopore long read assembled with miniasm 
 
 | statistics| plot   | 
 |-------------------------|--------------------------|        
