@@ -229,8 +229,6 @@ for barcode in barcodes_long:
     masterlist_of_long_assemblies.append(parse_long_assemblies(dir_path_long + barcode, barcode))
 
 with open("data/" + "Analysis.md", 'w') as stats:
-    for barcode in barcodes_long:
-        stats.write(barcode)
     for barcode in masterlist_of_short_assemblies:
         make_N50_plot(barcode)
         stats.write(f"""<img src="../plots/{barcode[0].barcode}_N50.png" width="400"> \n\n\n\n\n\n\n """)
@@ -238,7 +236,6 @@ with open("data/" + "Analysis.md", 'w') as stats:
             stats.write(str(assembly))
             make_contig_plots(assembly)
     for barcode in masterlist_of_long_assemblies:
-        stats.write(barcode)
         for assembly in barcode:
             stats.write(str(assembly))
         
