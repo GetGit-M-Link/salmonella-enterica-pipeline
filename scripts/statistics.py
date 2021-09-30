@@ -231,10 +231,7 @@ with open("data/" + "Analysis.md", 'w') as stats:
 
 | statistics| plot   | 
 |-------------------------|--------------------------|        
-|{str(barcode[0])}| {barcode[0].plot} |
-| {str(barcode[1])} | {barcode[1].plot}  |                                  
-| {str(barcode[2])} |{barcode[2].plot}    |                                                                                     
-""")
+|{str(assembly)}| {assembly.plot} |""")
             make_contig_plots(assembly, ("plots/" + assembly.barcode))
         
 
