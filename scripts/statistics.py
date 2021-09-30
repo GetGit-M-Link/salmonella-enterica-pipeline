@@ -263,13 +263,14 @@ for assembly_list in masterlist_of_short_assemblies:
     best_assemblies.append(best_assembly)
 with open("data/" + "best_assemblies.txt", 'w') as out_best_assemblies:
     out_best_assemblies.write(str(best_assemblies))
+best_assemblies_data.sort(key=lambda x: x.barcode, reverse=False)
 
 for barcode in masterlist_of_long_assemblies:
         for assembly in barcode:
             best_assemblies_data.append(assembly)
 
 with open("data/" + "best_data.txt", 'w') as out_best_data:
-    out_best_data.write('barcode,assemblylength,numberofcontigs,N50\n')
+    out_best_data.write('barcode,assemblylength,numberofcontigs,N50\n')    
     for assembly in best_assemblies_data:
         out_best_data.write(assembly.barcode + ',' + str(sum(assembly.contig_lengths)) + ',' + str(len(assembly.contig_lengths)) + ',' + str(assembly.N50_all_contigs) +'\n')
 
