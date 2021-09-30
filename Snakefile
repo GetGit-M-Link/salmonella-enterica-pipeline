@@ -16,7 +16,7 @@ rule all:
         expand("plots/{barcodes}_untrimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
         expand("plots/{barcodes}_trimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
         expand("plots/{long_barcodes}_miniasm.png",long_barcodes=config["LONG_BARCODES"]),
-        expand("/data/assembled/{long_barcodes}/miniasm/contigs.fasta",long_barcodes=config["LONG_BARCODES"])
+        expand("/data/long_read_assembled/{long_barcodes}/contigs.fasta",long_barcodes=config["LONG_BARCODES"])
 rule download_sr_paired:
     output:
         "/data/short-reads/{barcodes}_1.fastq",
@@ -46,7 +46,7 @@ rule assemble_long_reads:
         preprocessed="/data/long_read_preprocessed/{long_barcodes}.paf.gz",
         raw_reads="/data/short-reads_single/{long_barcodes}.fastq"
     output:
-        "/data/assembled/{long_barcodes}/miniasm/contigs.gfa"
+        "/data/assembled/{long_barcodes}/contigs.gfa"
         
     log:
         "logs/miniasm/{long_barcodes}.log"
@@ -56,9 +56,9 @@ rule assemble_long_reads:
         """
 rule gfa_to_fasta:
     input:
-        "/data/assembled/{long_barcodes}/miniasm/contigs.gfa"
+        "/data/assembled/{long_barcodes}/contigs.gfa"
     output:
-        "/data/assembled/{long_barcodes}/miniasm/contigs.fasta"
+        "/data/assembled/{long_barcodes}/contigs.fasta"
     log:
         "logs/awk/{long_barcodes}.log"
     shell:
@@ -99,10 +99,11 @@ rule analysis:
     input:
         expand("/data/assembled/{barcodes}_untrimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
         expand("/data/assembled/{barcodes}_trimmed/{value_of_k}/contigs.fasta",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
+        expand("/data/long_read_assembled/{long_barcodes}/contigs.fasta",long_barcodes=config["LONG_BARCODES"])
     output:
         expand("plots/{barcodes}_untrimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
         expand("plots/{barcodes}_trimmed_{value_of_k}.png",value_of_k=config["VALUE_OF_K"],barcodes=config["BARCODES"]),
-        expand("plots/{long_barcodes}_miniasm.png",long_barcodes=config["LONG_BARCODES"])
+        expand("plots/{long_barcodes}.png",long_barcodes=config["LONG_BARCODES"])
     shell:
-        "python3 scripts/statistics.py /data/assembled/"
+        "python3 scripts/statistics.py /data/assembled/ /data/long_read_assembled/"
 
