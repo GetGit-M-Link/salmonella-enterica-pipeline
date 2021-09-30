@@ -271,7 +271,7 @@ for barcode in masterlist_of_long_assemblies:
 with open("data/" + "best_data.txt", 'w') as out_best_data:
     out_best_data.write('barcode,assemblylength,numberofcontigs,N50\n')
     for assembly in best_assemblies_data:
-        out_best_data.write(assembly.barcode + ',' + str(sum(assembly.contig_lengths)) + ',' + str(len(assembly.contig_lengths)) + ',' + assembly.N50_all_contigs +'\n'
+        out_best_data.write(assembly.barcode + ',' + str(sum(assembly.contig_lengths)) + ',' + str(len(assembly.contig_lengths)) + ',' + assembly.N50_all_contigs +'\n')
 
 
 
