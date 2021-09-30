@@ -244,21 +244,34 @@ Decision for best assembly
 
 """
 best_assemblies = []
+best_assemblies_data = []
 for assembly_list in masterlist_of_short_assemblies:
     best_assembly = ""
     sorted_assemblies = assembly_list
     sorted_assemblies.sort(key=lambda x: x.N50_all_contigs, reverse=True)
     if sorted_assemblies[0].N50_all_contigs > sorted_assemblies[1].N50_all_contigs:
         best_assembly = sorted_assemblies[0].contigs_fasta_filename
+        best_assemblies_data.append(sorted_assemblies[0])
     else:
         print(str(sorted_assemblies[0].N50_all_contigs) + "vs. " + str(sorted_assemblies[1].N50_all_contigs))
         if sorted_assemblies[0].longest_contig > sorted_assemblies[1].longest_contig:
             best_assembly = sorted_assemblies[0].contigs_fasta_filename
+            best_assemblies_data.append(sorted_assemblies[0])
         else:
             best_assembly = sorted_assemblies[1].contigs_fasta_filename
+            best_assemblies_data.append(sorted_assemblies[1])
     best_assemblies.append(best_assembly)
 with open("data/" + "best_assemblies.txt", 'w') as out_best_assemblies:
     out_best_assemblies.write(str(best_assemblies))
+
+for barcode in masterlist_of_long_assemblies:
+        for assembly in barcode:
+            best_assemblies_data.append(assembly)
+
+with open("data/" + "best_data.txt", 'w') as out_best_data:
+    out_best_data.write('barcode,assemblylength,numberofcontigs,N50\n')
+    for assembly in best_assemblies_data:
+        out_best_data.write(assembly.barcode + ',' + str(sum(assembly.contig_lengths)) + ',' + str(len(assembly.contig_lengths)) + ',' + assembly.N50_all_contigs +'\n'
 
 
 
