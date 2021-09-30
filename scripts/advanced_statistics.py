@@ -34,7 +34,6 @@ g.despine(left=True)
 g.set_axis_labels("", "numberofcontigs")
 plt.xticks(rotation=45,ha=left)
 plt.tight_layout()
-plt.
 plt.savefig("plots/advanced/numberofcontigs")
 plt.clf()
 
