@@ -92,6 +92,8 @@ def parse_long_assemblies(assembly_path, barcode):
     assemblies = []
     contigs_file = assembly_path + "/" + barcode + "/contigs.fasta"
     gfa_file = assembly_path + "/" + barcode + "/contigs.gfa"
+    print(contigs_file)
+    print(gfa_file)
     if os.path.exists(contigs_file) and os.path.exists(gfa_file):
         assemblies.append(AssemblyLong(contigs_file, gfa_file, barcode))
     return assemblies
@@ -236,7 +238,7 @@ with open("data/" + "Analysis.md", 'w') as stats:
             stats.write(str(assembly))
             make_contig_plots(assembly)
     for barcode in masterlist_of_long_assemblies:
-        stats.write(str(barcode))
+        stats.write(barcode)
         for assembly in barcode:
             stats.write(str(assembly))
         
