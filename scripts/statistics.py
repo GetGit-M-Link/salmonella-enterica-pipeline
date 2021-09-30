@@ -74,8 +74,7 @@ def get_barcodes(dir_path):
     barcodes = []
     for item in os.scandir(dir_path):
         if item.is_dir() and item.name.startswith("SRR"):
-            print("Hi" + item.name)
-            barcodes.append(item.name)
+           barcodes.append(item.name)
     return barcodes
     
 
@@ -218,13 +217,14 @@ dir_path_long = sys.argv[2]
 #dir_path = snakemake.input[0]
 barcodes_short = get_barcodes(dir_path_short)
 barcodes_long = get_barcodes(dir_path_long)
+print(barcode_long)
 # To save a list of assemblies for each barcode
 masterlist_of_short_assemblies = []
 masterlist_of_long_assemblies = []
 for barcode in barcodes_short:
     masterlist_of_short_assemblies.append(parse_short_assemblies(dir_path_short + barcode, barcode))
 for barcode in barcodes_long:
-    masterlist_of_long_assemblies.append(parse_short_assemblies(dir_path_long + barcode, barcode))
+    masterlist_of_long_assemblies.append(parse_long_assemblies(dir_path_long + barcode, barcode))
 
 with open("data/" + "Analysis.md", 'w') as stats:
     for barcode in barcodes_long:
