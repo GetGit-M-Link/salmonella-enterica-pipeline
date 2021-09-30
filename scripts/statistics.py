@@ -29,12 +29,12 @@ class AssemblyShort:
         self.k_value = k_value
         self.plot = f"""<img src="../plots/{self.barcode}_{self.k_value}.png" width="400">"""
     def __str__(self):
-        return f"""|average contig length: {self.avg_contigs_length}|                                                     
-|total number of contigs: {self.totl_nr_contigs} |                                                       
-|shortest contig: {self.shortest_contig}         |                                                       
-|longest contig: {self.longest_contig}           |                                                       
-|<N50 of all contigs: {self.N50_all_contigs}      |                                                        
-|N50 of all contigs over 300 bp: {self.N50_contigs_over_300}|"""
+        return f"""- average contig length: {self.avg_contigs_length}                                                   
+-total number of contigs: {self.totl_nr_contigs}                                                        
+-shortest contig: {self.shortest_contig}                                                               
+-longest contig: {self.longest_contig}                                                                  
+-<N50 of all contigs: {self.N50_all_contigs}                                                              
+-N50 of all contigs over 300 bp: {self.N50_contigs_over_300}"""
 
 class AssemblyLong:
     def __init__(self, contigs_fasta_filename, gfa_filename, barcode):
