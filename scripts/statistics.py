@@ -220,9 +220,10 @@ with open("data/" + "Analysis.md", 'w') as stats:
         make_N50_plot(barcode)
         stats.write(f"""
 #### statistics analysis for barcode: {barcode[0].barcode} 
+|N50|
 |---|  
 |<img src="../plots/{barcode[0].barcode}_N50.png" width="400">|
-|---|
+
 
 | k  |statistics| plot   | 
 |-------------------------|--------------------------|--------------------------|        
@@ -230,7 +231,7 @@ with open("data/" + "Analysis.md", 'w') as stats:
 |-------------------------|--------------------------|--------------------------|
 |{barcode[1].k_value}| {str(barcode[1])} | {barcode[1].plot}  |                                  
 |-------------------------|--------------------------|--------------------------|   
-| {barcode[2].k_value} |{str(barcode[2])} {barcode[2].plot}    |                                                                                     
+| {barcode[2].k_value} |{str(barcode[2])} |{barcode[2].plot}    |                                                                                     
 """)
         for assembly in barcode:
             make_contig_plots(assembly, ("plots/" + assembly.barcode + "_" + assembly.k_value))
