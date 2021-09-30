@@ -119,7 +119,7 @@
 |55| average contig length: 17403.894736842107 <br> total number of contigs: 285 <br> shortest contig: 56  <br> longest contig: 150850 <br> N50 of all contigs: 54168.0 <br> N50 of all contigs over 300 bp: 55820.0 | <img src="../plots/SRR1968189_trimmed_55.png" width="400">  |                                  
 | auto |average contig length: 25976.392670157067 <br> total number of contigs: 191 <br> shortest contig: 56  <br> longest contig: 266422 <br> N50 of all contigs: 100502 <br> N50 of all contigs over 300 bp: 100502 |<img src="../plots/SRR1968189_trimmed_auto.png" width="400">    |                                                                                     
 
-#### statistics analysis for barcode: barcode[0].barcode Nanopore long read assembled with miniasm 
+#### statistics analysis for barcode: assembly.barcode Nanopore long read assembled with miniasm 
 
 | statistics| plot   | 
 |-------------------------|--------------------------|        
