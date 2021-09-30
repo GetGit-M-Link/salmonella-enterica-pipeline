@@ -159,7 +159,7 @@ conda install minimap2     (miniasm-0.3_r179)
 ```
 Update analysis script for long reads
 ```
-conda install biopython
+conda install biopython    (1.78)
 ```
 
 
