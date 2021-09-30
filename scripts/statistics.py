@@ -7,46 +7,46 @@ import sys
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+from Bio import SeqIO
 
 """
 in the Assembly object all important informations are saved. Each assembly (each k-value of each barcode) is its own Assembly object
 """
 
-class Assembly:
+class AssemblyShort:
     def __init__(self, contigs_fasta_filename, log_filename, k_value, barcode):
-        # path to contigs.fasta file
         self.contigs_fasta_filename = contigs_fasta_filename
-        # path to spades.log file
         self.log_filename = log_filename
-        # list of contig length in contig.fasta
-        self.contig_lengths = get_contig_lengths(contigs_fasta_filename)
-        # average read length of input files for spades assembly (queried from spades.log)
-        self.avg_read_length = read_avg_read_length(log_filename)
-        # average contigs length (calculated from contigs.fasta)
+        self.contig_lengths = get_contig_lengths_short(contigs_fasta_filename)
+        self.avg_read_length = read_avg_read_length_short(log_filename)
         self.avg_contigs_length = calc_avg_contig_length(self.contig_lengths)
-         # total number of contigs (counted in contigs.fasta)
         self.totl_nr_contigs = len(self.contig_lengths)
-        # Shortest contig in contigs.fasta
         self.shortest_contig = min(self.contig_lengths)
-        # Longest contig in contigs.fasta
         self.longest_contig = max (self.contig_lengths)
-        # N50 calculated from contig.fasta
         self.N50_all_contigs = calculate_N50(self.contig_lengths)
-        # N50 for all contigs longer than 300bp from contigs.fasta
         self.N50_contigs_over_300 = calculate_N50_bigger_300(self.contig_lengths)
         self.barcode = barcode
         self.k_value = k_value
+        self.plot = f"""<img src="../plots/{self.barcode}_{self.k_value}.png" width="400">"""
     def __str__(self):
-        return f"""# statistics analysis for barcode: {self.barcode} assembled with SPAdes with parameter k = {self.k_value}  
-        average contig length: {self.avg_contigs_length}  
-        total number of contigs: {self.totl_nr_contigs}  
-        shortest contig: {self.shortest_contig}  
-        longest contig: {self.longest_contig}  
-        N50 of all contigs: {self.N50_all_contigs}  
-        N50 of all contigs over 300 bp: {self.N50_contigs_over_300} 
-<img src="../plots/{self.barcode}_{self.k_value}.png" width="400">
- \n\n\n\n\n\n\n\n\n\n\n\n\n\n """
+        return f"""average contig length: {self.avg_contigs_length} <br> total number of contigs: {self.totl_nr_contigs} <br> shortest contig: {self.shortest_contig}  <br> longest contig: {self.longest_contig} <br> N50 of all contigs: {self.N50_all_contigs} <br> N50 of all contigs over 300 bp: {self.N50_contigs_over_300}"""
 
+class AssemblyLong:
+    def __init__(self, contigs_fasta_filename, gfa_filename, barcode):
+        self.contigs_fasta_filename = contigs_fasta_filename
+        self.gfa_filename = gfa_filename
+        self.contig_lengths = get_contig_lengths_long(contigs_fasta_filename)
+        self.avg_contigs_length = calc_avg_contig_length(self.contig_lengths)
+        self.totl_nr_contigs = len(self.contig_lengths)
+        self.shortest_contig = min(self.contig_lengths)
+        self.longest_contig = max (self.contig_lengths)
+        self.N50_all_contigs = calculate_N50(self.contig_lengths)
+        self.N50_contigs_over_300 = calculate_N50_bigger_300(self.contig_lengths)
+        self.barcode = barcode
+        self.plot = f"""<img src="../plots/{self.barcode}.png" width="400">"""
+        
+    def __str__(self):
+        return f"""average contig length: {self.avg_contigs_length}<br>total number of contigs: {self.totl_nr_contigs} <br>shortest contig: {self.shortest_contig}<br>longest contig: {self.longest_contig}<br>N50 of all contigs: {self.N50_all_contigs}<br>N50 of all contigs over 300 bp: {self.N50_contigs_over_300}"""
 
 """
 get files
@@ -55,32 +55,40 @@ def get_barcodes(dir_path):
     barcodes = []
     for item in os.scandir(dir_path):
         if item.is_dir() and item.name.startswith("SRR"):
-            barcodes.append(item.name)
+           barcodes.append(item.name)
     return barcodes
     
-#get_assemblies(dir_path + barcode))
-def get_assemblies(assembly_path, barcode):
+
+def parse_short_assemblies(assembly_path, barcode):
     assemblies = []
     for item in os.scandir(assembly_path):
         if item.is_dir():
             contigs_file = assembly_path + "/" + item.name + "/contigs.fasta"
             log_file = assembly_path + "/" + item.name + "/spades.log"
             if os.path.exists(contigs_file) and os.path.exists(log_file):
-                assemblies.append(Assembly(contigs_file, log_file, str(item.name), barcode))
+                assemblies.append(AssemblyShort(contigs_file, log_file, str(item.name), barcode))
+    return assemblies
+
+def parse_long_assemblies(assembly_path, barcode):
+    assemblies = []
+    contigs_file = assembly_path + "/contigs.fasta"
+    gfa_file = assembly_path + "/contigs.gfa"
+    if os.path.exists(contigs_file) and os.path.exists(gfa_file):
+        assemblies.append(AssemblyLong(contigs_file, gfa_file, barcode))
     return assemblies
 
 """
 average read length
 ->spades.log Average read length
 """
-def read_avg_read_length(filepath):
+def read_avg_read_length_short(filepath):
     with open(filepath, 'r') as log_file:
         return float((log_file.read().split("Average read length ")[1].split("\n")[0]))
 
 """
 Read contig.fasta file
 """
-def get_contig_lengths(file):
+def get_contig_lengths_short(file):
     with open(file, 'r') as fasta:
     #  contigs = fasta.read().split(">NODE")
     # Splits fasta file at _length_ to have lines starting with the length (except the first item in the list, which is the text before)
@@ -90,6 +98,12 @@ def get_contig_lengths(file):
     lengths = []
     for length in dirty_lengths:
         lengths.append(int(length.split("_")[0]))
+    return lengths
+
+def get_contig_lengths_long(contigs_fasta_filename):
+    lengths = []
+    for record in SeqIO.parse(contigs_fasta_filename, "fasta"):
+        lengths.append(len(record))
     return lengths
 
 
@@ -137,10 +151,10 @@ def calculate_N50_bigger_300(list_of_lengths):
 plots
 
 """
-def make_contig_plots(assembly):
+def make_contig_plots(assembly, path):
     df = pd.DataFrame (assembly.contig_lengths, columns = ['contig_length'])
     sns.histplot(data=df, x="contig_length", log_scale=True)
-    plt.savefig("plots/" + assembly.barcode + "_" + assembly.k_value)
+    plt.savefig(path)
     plt.clf()
 
 def make_N50_plot(barcode):
@@ -179,24 +193,47 @@ and write analysis file
 
 """
 
-dir_path = sys.argv[1]
+dir_path_short = sys.argv[1]
+dir_path_long = sys.argv[2]
 #dir_path = snakemake.input[0]
-barcodes = get_barcodes(dir_path)
+barcodes_short = get_barcodes(dir_path_short)
+barcodes_long = get_barcodes(dir_path_long)
 # To save a list of assemblies for each barcode
-masterlist_of_assemblies = []
-for barcode in barcodes:
-    masterlist_of_assemblies.append(get_assemblies(dir_path + barcode, barcode))
+masterlist_of_short_assemblies = []
+masterlist_of_long_assemblies = []
+for barcode in barcodes_short:
+    masterlist_of_short_assemblies.append(parse_short_assemblies(dir_path_short + barcode, barcode))
+for barcode in barcodes_long:
+    masterlist_of_long_assemblies.append(parse_long_assemblies(dir_path_long + barcode, barcode))
 
 with open("data/" + "Analysis.md", 'w') as stats:
-    for barcode in masterlist_of_assemblies:
+    for barcode in masterlist_of_short_assemblies:
         make_N50_plot(barcode)
-        stats.write(f"""<img src="../plots/{barcode[0].barcode}_N50.png" width="400"> \n\n\n\n\n\n\n """)
+        stats.write(f"""
+#### statistics analysis for barcode: {barcode[0].barcode} 
+|N50|
+|---|  
+|<img src="../plots/{barcode[0].barcode}_N50.png" width="400">|
+
+
+| k  |statistics| plot   | 
+|-------------------------|--------------------------|--------------------------|        
+|{barcode[0].k_value} |{str(barcode[0])}| {barcode[0].plot} |
+|{barcode[1].k_value}| {str(barcode[1])} | {barcode[1].plot}  |                                  
+| {barcode[2].k_value} |{str(barcode[2])} |{barcode[2].plot}    |                                                                                     
+""")
         for assembly in barcode:
-            stats.write(str(assembly))
-            make_contig_plots(assembly)
+            make_contig_plots(assembly, ("plots/" + assembly.barcode + "_" + assembly.k_value))
+    for barcode in masterlist_of_long_assemblies:
+        for assembly in barcode:
+            stats.write(f"""
+#### statistics analysis for barcode: assembly.barcode Nanopore long read assembled with miniasm 
+
+| statistics| plot   | 
+|-------------------------|--------------------------|        
+|{str(assembly)}| {assembly.plot} |""")
+            make_contig_plots(assembly, ("plots/" + assembly.barcode))
         
-
-
 
 
 
@@ -207,21 +244,35 @@ Decision for best assembly
 
 """
 best_assemblies = []
-for assembly_list in masterlist_of_assemblies:
+best_assemblies_data = []
+for assembly_list in masterlist_of_short_assemblies:
     best_assembly = ""
     sorted_assemblies = assembly_list
     sorted_assemblies.sort(key=lambda x: x.N50_all_contigs, reverse=True)
     if sorted_assemblies[0].N50_all_contigs > sorted_assemblies[1].N50_all_contigs:
         best_assembly = sorted_assemblies[0].contigs_fasta_filename
+        best_assemblies_data.append(sorted_assemblies[0])
     else:
         print(str(sorted_assemblies[0].N50_all_contigs) + "vs. " + str(sorted_assemblies[1].N50_all_contigs))
         if sorted_assemblies[0].longest_contig > sorted_assemblies[1].longest_contig:
             best_assembly = sorted_assemblies[0].contigs_fasta_filename
+            best_assemblies_data.append(sorted_assemblies[0])
         else:
             best_assembly = sorted_assemblies[1].contigs_fasta_filename
+            best_assemblies_data.append(sorted_assemblies[1])
     best_assemblies.append(best_assembly)
 with open("data/" + "best_assemblies.txt", 'w') as out_best_assemblies:
     out_best_assemblies.write(str(best_assemblies))
+best_assemblies_data.sort(key=lambda x: x.barcode, reverse=False)
+
+for barcode in masterlist_of_long_assemblies:
+        for assembly in barcode:
+            best_assemblies_data.append(assembly)
+
+with open("data/" + "best_data.txt", 'w') as out_best_data:
+    out_best_data.write('barcode,assemblylength,numberofcontigs,N50\n')    
+    for assembly in best_assemblies_data:
+        out_best_data.write(assembly.barcode + ',' + str(sum(assembly.contig_lengths)) + ',' + str(len(assembly.contig_lengths)) + ',' + str(assembly.N50_all_contigs) +'\n')
 
 
 
