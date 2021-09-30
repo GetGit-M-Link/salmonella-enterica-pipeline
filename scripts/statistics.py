@@ -15,25 +15,15 @@ in the Assembly object all important informations are saved. Each assembly (each
 
 class AssemblyShort:
     def __init__(self, contigs_fasta_filename, log_filename, k_value, barcode):
-        # path to contigs.fasta file
         self.contigs_fasta_filename = contigs_fasta_filename
-        # path to spades.log file
         self.log_filename = log_filename
-        # list of contig length in contig.fasta
-        self.contig_lengths = get_contig_lengths(contigs_fasta_filename)
-        # average read length of input files for spades assembly (queried from spades.log)
-        self.avg_read_length = read_avg_read_length(log_filename)
-        # average contigs length (calculated from contigs.fasta)
+        self.contig_lengths = get_contig_lengths_short(contigs_fasta_filename)
+        self.avg_read_length = read_avg_read_length_short(log_filename)
         self.avg_contigs_length = calc_avg_contig_length(self.contig_lengths)
-         # total number of contigs (counted in contigs.fasta)
         self.totl_nr_contigs = len(self.contig_lengths)
-        # Shortest contig in contigs.fasta
         self.shortest_contig = min(self.contig_lengths)
-        # Longest contig in contigs.fasta
         self.longest_contig = max (self.contig_lengths)
-        # N50 calculated from contig.fasta
         self.N50_all_contigs = calculate_N50(self.contig_lengths)
-        # N50 for all contigs longer than 300bp from contigs.fasta
         self.N50_contigs_over_300 = calculate_N50_bigger_300(self.contig_lengths)
         self.barcode = barcode
         self.k_value = k_value
@@ -47,6 +37,34 @@ class AssemblyShort:
         N50 of all contigs over 300 bp: {self.N50_contigs_over_300} 
 <img src="../plots/{self.barcode}_{self.k_value}.png" width="400">
  \n\n\n\n\n\n\n\n\n\n\n\n\n\n """
+
+class AssemblyLong:
+    def __init__(self, contigs_fasta_filename, gfa_filename, barcode):
+        self.contigs_fasta_filename = contigs_fasta_filename
+        self.gfa_filename = gfa_filename
+        self.contig_lengths = get_contig_lengths_long(contigs_fasta_filename)
+        self.avg_contigs_length = calc_avg_contig_length(self.contig_lengths)
+        self.totl_nr_contigs = len(self.contig_lengths)
+        self.shortest_contig = min(self.contig_lengths)
+        self.longest_contig = max (self.contig_lengths)
+        self.N50_all_contigs = calculate_N50(self.contig_lengths)
+        self.N50_contigs_over_300 = calculate_N50_bigger_300(self.contig_lengths)
+        self.barcode = barcode
+        
+    def __str__(self):
+        return f"""# statistics analysis for barcode: {self.barcode} assembled with SPAdes with parameter k = {self.k_value}  
+        average contig length: {self.avg_contigs_length}  
+        total number of contigs: {self.totl_nr_contigs}  
+        shortest contig: {self.shortest_contig}  
+        longest contig: {self.longest_contig}  
+        N50 of all contigs: {self.N50_all_contigs}  
+        N50 of all contigs over 300 bp: {self.N50_contigs_over_300} 
+<img src="../plots/{self.barcode}.png" width="400">
+ \n\n\n\n\n\n\n\n\n\n\n\n\n\n """
+
+
+
+
 
 
 """
@@ -72,12 +90,10 @@ def parse_short_assemblies(assembly_path, barcode):
 
 def parse_long_assemblies(assembly_path, barcode):
     assemblies = []
-    for item in os.scandir(assembly_path):
-        if item.is_dir():
-            contigs_file = assembly_path + "/" + item.name + "/contigs.fasta"
-            gfa_file = assembly_path + "/" + item.name + "/contigs.gfa"
-            if os.path.exists(contigs_file) and os.path.exists(gfa_file):
-                assemblies.append(AssemblyLong(contigs_file, gfa_file, str(item.name), barcode))
+    contigs_file = assembly_path + "/" + item.name + "/contigs.fasta"
+    gfa_file = assembly_path + "/" + item.name + "/contigs.gfa"
+        if os.path.exists(contigs_file) and os.path.exists(gfa_file):
+            assemblies.append(AssemblyLong(contigs_file, gfa_file, barcode))
     return assemblies
 
 """
@@ -91,7 +107,7 @@ def read_avg_read_length(filepath):
 """
 Read contig.fasta file
 """
-def get_contig_lengths(file):
+def get_contig_lengths_short(file):
     with open(file, 'r') as fasta:
     #  contigs = fasta.read().split(">NODE")
     # Splits fasta file at _length_ to have lines starting with the length (except the first item in the list, which is the text before)
@@ -101,6 +117,12 @@ def get_contig_lengths(file):
     lengths = []
     for length in dirty_lengths:
         lengths.append(int(length.split("_")[0]))
+    return lengths
+
+get_contig_lengths_long(contigs_fasta_filename):
+    lengths = []
+    for record in SeqIO.parse(contigs_fasta_filename, "fasta"):
+        length.append(len(record))
     return lengths
 
 
@@ -199,6 +221,8 @@ barcodes_long = get_barcodes(dir_path_long)
 masterlist_of_assemblies = []
 for barcode in barcodes_short:
     masterlist_of_short_assemblies.append(parse_short_assemblies(dir_path_short + barcode, barcode))
+for barcode in barcodes_long:
+    masterlist_of_long_assemblies.append(parse_short_assemblies(dir_path_long + barcode, barcode))
 
 with open("data/" + "Analysis.md", 'w') as stats:
     for barcode in masterlist_of_short_assemblies:
@@ -207,6 +231,9 @@ with open("data/" + "Analysis.md", 'w') as stats:
         for assembly in barcode:
             stats.write(str(assembly))
             make_contig_plots(assembly)
+    for barcode in masterlist_of_long_assemblies:
+        for assembly in barcode:
+            stats.write(str(assembly))
         
 
 
