@@ -233,7 +233,7 @@ with open("data/" + "Analysis.md", 'w') as stats:
 #### statistics analysis for barcode: {barcode[0].barcode}           
 |k = {barcode[0].k_value} | k = {barcode[1].k_value} | k = {barcode[2].k_value} | 
 |-------------------------|--------------------------|--------------------------|
-|{str({barcode[0])}       | {str({barcode[0])}       |{str({barcode[0])}        |
+|{str(barcode[0])}       | {str(barcode[0])}       |{str(barcode[0])}        |
 |-------------------------|--------------------------|--------------------------|   
 | {assembly.plot}                                                               |
 """)
