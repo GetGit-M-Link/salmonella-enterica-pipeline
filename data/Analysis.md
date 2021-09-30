@@ -368,26 +368,13 @@
 |N50 of all contigs: 100502                                                              |
 |N50 of all contigs over 300 bp: 100502                                             |
                                               
-# statistics analysis for barcode: SRR8902592 Nanopore long read assembled with miniasm
-        average contig length: 40438.74324324324  
-        total number of contigs: 148  
-        shortest contig: 3229  
-        longest contig: 4870332  
-        N50 of all contigs: 4870332.0  
-        N50 of all contigs over 300 bp: 4870332.0 
-<img src="../plots/SRR8902592.png" width="400">
- 
 
-
-
-
-
-
-
-
-
-
-
-
-
- 
+|statistics analysis for barcode: SRR8902592 Nanopore long read assembled with miniasm | plot
+| ------------------------------------------------------------------------------------------------------| --------------------------------------------
+|average contig length: 40438.74324324324                                                        | <img src="../plots/SRR8902592.png" width="400">
+|total number of contigs: 148                                                         | 
+|shortest contig: 3229                                                                 |
+|longest contig: 4870332                                                                   |
+|N50 of all contigs: 4870332.0                                                              |
+|N50 of all contigs over 300 bp: 4870332.0                                             |
+                                              
