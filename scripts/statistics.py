@@ -29,7 +29,7 @@ class AssemblyShort:
         self.k_value = k_value
         self.plot = f"""<img src="../plots/{self.barcode}_{self.k_value}.png" width="400">"""
     def __str__(self):
-        return f"""average contig length: {self.avg_contigs_length} \\ total number of contigs: {self.totl_nr_contigs} \\ shortest contig: {self.shortest_contig}  \\ longest contig: {self.longest_contig} \\ <N50 of all contigs: {self.N50_all_contigs} \\ N50 of all contigs over 300 bp: {self.N50_contigs_over_300}"""
+        return f"""average contig length: {self.avg_contigs_length} <br> total number of contigs: {self.totl_nr_contigs} <br> shortest contig: {self.shortest_contig}  <br> longest contig: {self.longest_contig} <br> <N50 of all contigs: {self.N50_all_contigs} <br> N50 of all contigs over 300 bp: {self.N50_contigs_over_300}"""
 
 class AssemblyLong:
     def __init__(self, contigs_fasta_filename, gfa_filename, barcode):
@@ -218,14 +218,19 @@ for barcode in barcodes_long:
 with open("data/" + "Analysis.md", 'w') as stats:
     for barcode in masterlist_of_short_assemblies:
         make_N50_plot(barcode)
-        stats.write(f"""<img src="../plots/{barcode[0].barcode}_N50.png" width="400"> \n\n\n\n\n\n\n """)
         stats.write(f"""
-#### statistics analysis for barcode: {barcode[0].barcode}           
-|k = {barcode[0].k_value} {str(barcode[0])} {barcode[0].plot}
+#### statistics analysis for barcode: {barcode[0].barcode} 
+|---|  
+|<img src="../plots/{barcode[0].barcode}_N50.png" width="400">|
+|---|
+
+| k  |statistics| plot   | 
+|-------------------------|--------------------------|--------------------------|        
+|{barcode[0].k_value} |{str(barcode[0])}| {barcode[0].plot} |
 |-------------------------|--------------------------|--------------------------|
-|k = {barcode[1].k_value} {str(barcode[1])} {barcode[1].plot}                                    
+|{barcode[1].k_value}| {str(barcode[1])} | {barcode[1].plot}  |                                  
 |-------------------------|--------------------------|--------------------------|   
-| k = {barcode[2].k_value} {str(barcode[2])} {barcode[2].plot}                                                                                         
+| {barcode[2].k_value} |{str(barcode[2])} {barcode[2].plot}    |                                                                                     
 """)
         for assembly in barcode:
             make_contig_plots(assembly, ("plots/" + assembly.barcode + "_" + assembly.k_value))
