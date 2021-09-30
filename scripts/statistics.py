@@ -227,7 +227,7 @@ for barcode in barcodes_long:
 
 with open("data/" + "Analysis.md", 'w') as stats:
     for barcode in barcodes_long:
-        stats.write(str(barcode))
+        stats.write(barcode)
     for barcode in masterlist_of_short_assemblies:
         make_N50_plot(barcode)
         stats.write(f"""<img src="../plots/{barcode[0].barcode}_N50.png" width="400"> \n\n\n\n\n\n\n """)
