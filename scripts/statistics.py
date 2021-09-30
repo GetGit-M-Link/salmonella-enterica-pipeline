@@ -172,10 +172,10 @@ def calculate_N50_bigger_300(list_of_lengths):
 plots
 
 """
-def make_contig_plots(assembly):
+def make_contig_plots(assembly, path):
     df = pd.DataFrame (assembly.contig_lengths, columns = ['contig_length'])
     sns.histplot(data=df, x="contig_length", log_scale=True)
-    plt.savefig("plots/" + assembly.barcode + "_" + assembly.k_value)
+    plt.savefig(path)
     plt.clf()
 
 def make_N50_plot(barcode):
@@ -233,10 +233,11 @@ with open("data/" + "Analysis.md", 'w') as stats:
         stats.write(f"""<img src="../plots/{barcode[0].barcode}_N50.png" width="400"> \n\n\n\n\n\n\n """)
         for assembly in barcode:
             stats.write(str(assembly))
-            make_contig_plots(assembly)
+            make_contig_plots(assembly, ("plots/" + assembly.barcode + "_" + assembly.k_value))
     for barcode in masterlist_of_long_assemblies:
         for assembly in barcode:
             stats.write(str(assembly))
+            make_contig_plots(assembly, ("plots/" + assembly.barcode))
         
 
 
