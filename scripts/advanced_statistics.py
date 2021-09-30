@@ -5,7 +5,7 @@ import seaborn as sns
 df = pd.read_csv('data/best_data.txt')
 
 g = sns.catplot(data=df, kind="bar",
-x="barcode", y="N50s", 
+x="barcode", y="N50", 
 ci="sd", palette="dark", alpha=.6, height=6
 )
 g.despine(left=True)
