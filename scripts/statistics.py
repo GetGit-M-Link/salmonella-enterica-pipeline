@@ -7,12 +7,13 @@ import sys
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+from Bio import SeqIO
 
 """
 in the Assembly object all important informations are saved. Each assembly (each k-value of each barcode) is its own Assembly object
 """
 
-class Assembly:
+class AssemblyShort:
     def __init__(self, contigs_fasta_filename, log_filename, k_value, barcode):
         # path to contigs.fasta file
         self.contigs_fasta_filename = contigs_fasta_filename
@@ -58,15 +59,25 @@ def get_barcodes(dir_path):
             barcodes.append(item.name)
     return barcodes
     
-#get_assemblies(dir_path + barcode))
-def get_assemblies(assembly_path, barcode):
+
+def parse_short_assemblies(assembly_path, barcode):
     assemblies = []
     for item in os.scandir(assembly_path):
         if item.is_dir():
             contigs_file = assembly_path + "/" + item.name + "/contigs.fasta"
             log_file = assembly_path + "/" + item.name + "/spades.log"
             if os.path.exists(contigs_file) and os.path.exists(log_file):
-                assemblies.append(Assembly(contigs_file, log_file, str(item.name), barcode))
+                assemblies.append(AssemblyShort(contigs_file, log_file, str(item.name), barcode))
+    return assemblies
+
+def parse_long_assemblies(assembly_path, barcode):
+    assemblies = []
+    for item in os.scandir(assembly_path):
+        if item.is_dir():
+            contigs_file = assembly_path + "/" + item.name + "/contigs.fasta"
+            gfa_file = assembly_path + "/" + item.name + "/contigs.gfa"
+            if os.path.exists(contigs_file) and os.path.exists(gfa_file):
+                assemblies.append(AssemblyLong(contigs_file, gfa_file, str(item.name), barcode))
     return assemblies
 
 """
@@ -179,16 +190,18 @@ and write analysis file
 
 """
 
-dir_path = sys.argv[1]
+dir_path_short = sys.argv[1]
+dir_path_long = sys.argv[2]
 #dir_path = snakemake.input[0]
-barcodes = get_barcodes(dir_path)
+barcodes_short = get_barcodes(dir_path_short)
+barcodes_long = get_barcodes(dir_path_long)
 # To save a list of assemblies for each barcode
 masterlist_of_assemblies = []
-for barcode in barcodes:
-    masterlist_of_assemblies.append(get_assemblies(dir_path + barcode, barcode))
+for barcode in barcodes_short:
+    masterlist_of_short_assemblies.append(parse_short_assemblies(dir_path_short + barcode, barcode))
 
 with open("data/" + "Analysis.md", 'w') as stats:
-    for barcode in masterlist_of_assemblies:
+    for barcode in masterlist_of_short_assemblies:
         make_N50_plot(barcode)
         stats.write(f"""<img src="../plots/{barcode[0].barcode}_N50.png" width="400"> \n\n\n\n\n\n\n """)
         for assembly in barcode:
@@ -207,7 +220,7 @@ Decision for best assembly
 
 """
 best_assemblies = []
-for assembly_list in masterlist_of_assemblies:
+for assembly_list in masterlist_of_short_assemblies:
     best_assembly = ""
     sorted_assemblies = assembly_list
     sorted_assemblies.sort(key=lambda x: x.N50_all_contigs, reverse=True)
