@@ -29,7 +29,7 @@ class AssemblyShort:
         self.k_value = k_value
         self.plot = f"""<img src="../plots/{self.barcode}_{self.k_value}.png" width="400">"""
     def __str__(self):
-        return f"""average contig length: {self.avg_contigs_length} <br> total number of contigs: {self.totl_nr_contigs} <br> shortest contig: {self.shortest_contig}  <br> longest contig: {self.longest_contig} <br> <N50 of all contigs: {self.N50_all_contigs} <br> N50 of all contigs over 300 bp: {self.N50_contigs_over_300}"""
+        return f"""average contig length: {self.avg_contigs_length} <br> total number of contigs: {self.totl_nr_contigs} <br> shortest contig: {self.shortest_contig}  <br> longest contig: {self.longest_contig} <br> N50 of all contigs: {self.N50_all_contigs} <br> N50 of all contigs over 300 bp: {self.N50_contigs_over_300}"""
 
 class AssemblyLong:
     def __init__(self, contigs_fasta_filename, gfa_filename, barcode):
@@ -43,19 +43,10 @@ class AssemblyLong:
         self.N50_all_contigs = calculate_N50(self.contig_lengths)
         self.N50_contigs_over_300 = calculate_N50_bigger_300(self.contig_lengths)
         self.barcode = barcode
+        self.plot = f"""<img src="../plots/{self.barcode}.png" width="400">"""
         
     def __str__(self):
-        return f"""
-|statistics analysis for barcode: {self.barcode} Nanopore long read assembled with miniasm | plot
-| ------------------------------------------------------------------------------------------------------| --------------------------------------------
-|average contig length: {self.avg_contigs_length}                                                        | <img src="../plots/{self.barcode}.png" width="400">
-|total number of contigs: {self.totl_nr_contigs}                                                         | 
-|shortest contig: {self.shortest_contig}                                                                 |
-|longest contig: {self.longest_contig}                                                                   |
-|N50 of all contigs: {self.N50_all_contigs}                                                              |
-|N50 of all contigs over 300 bp: {self.N50_contigs_over_300}                                             |
-                                              
-"""
+        return f"""average contig length: {self.avg_contigs_length}<br>total number of contigs: {self.totl_nr_contigs} <br>shortest contig: {self.shortest_contig}<br>longest contig: {self.longest_contig}<br>N50 of all contigs: {self.N50_all_contigs}<br>N50 of all contigs over 300 bp: {self.N50_contigs_over_300}"""
 
 """
 get files
@@ -235,11 +226,17 @@ with open("data/" + "Analysis.md", 'w') as stats:
             make_contig_plots(assembly, ("plots/" + assembly.barcode + "_" + assembly.k_value))
     for barcode in masterlist_of_long_assemblies:
         for assembly in barcode:
-            stats.write(str(assembly))
+            stats.write(f"""
+#### statistics analysis for barcode: barcode[0].barcode Nanopore long read assembled with miniasm 
+
+| statistics| plot   | 
+|-------------------------|--------------------------|        
+|{str(barcode[0])}| {barcode[0].plot} |
+| {str(barcode[1])} | {barcode[1].plot}  |                                  
+| {str(barcode[2])} |{barcode[2].plot}    |                                                                                     
+""")
             make_contig_plots(assembly, ("plots/" + assembly.barcode))
         
-
-
 
 
 
