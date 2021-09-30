@@ -100,7 +100,7 @@ def parse_long_assemblies(assembly_path, barcode):
 average read length
 ->spades.log Average read length
 """
-def read_avg_read_length(filepath):
+def read_avg_read_length_short(filepath):
     with open(filepath, 'r') as log_file:
         return float((log_file.read().split("Average read length ")[1].split("\n")[0]))
 
