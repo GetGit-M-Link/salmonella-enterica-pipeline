@@ -10,7 +10,7 @@
 | 1|2 | 3|
 |-------------------------|--------------------------|--------------------------|
 |k = 31 | average contig length: 3363.1139410187666 |   |
-|   | total number of contigs: 1492 |   |
+ total number of contigs: 1492
 |   | shortest contig: 32  |   |
 |    | longest contig: 321983 |   |
 |    | <N50 of all contigs: 96827.0 |   |
