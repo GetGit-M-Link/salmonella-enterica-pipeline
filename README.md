@@ -1,6 +1,6 @@
 ## A genomics pipeline with snakemake
 
-<img src="dag-simplified.svg" width="400">
+<img src="dag-simplified.svg" width="500">
 
 >Your boss is looking for a motivated student to do some reproducible data analysis on a few
 >Salmonella enterica genomes they sequenced recently.
