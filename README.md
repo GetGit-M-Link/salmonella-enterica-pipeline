@@ -5,6 +5,8 @@
 >Your boss is looking for a motivated student to do some reproducible data analysis on a few
 >Salmonella enterica genomes they sequenced recently.
 
+[TOC]
+
 ### Salmonella: a brief introduction
 Salmonella enterica are Gram-negative, facultative anaerobic, flagellate bacteria.  
 Some of it serovars are human pathogens.  
