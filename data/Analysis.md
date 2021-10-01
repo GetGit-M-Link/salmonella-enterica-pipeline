@@ -1,4 +1,13 @@
+## Analysis
+#### comparison of the best assemblies
+|N50 comparison|assembly length comparison|number of contigs
+|---|---|---|
+|<img src="../plots/advanced/N50.png" width="400">|<img src="../plots/advanced/assemblylength.png" width="400">|<img src="../plots/advanced/numberofcontigs.png" width="400">|  
+  
 
+#### analysis for all assemblies  
+  
+  
 #### statistics analysis for barcode: SRR1965341_untrimmed 
 |N50|
 |---|  
