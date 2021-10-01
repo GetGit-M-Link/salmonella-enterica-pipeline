@@ -11,9 +11,10 @@
 
 #### Setup:
 ```
-conda env create -n salmonella -f tools/environment.yml
+conda env create -n salmonella -f tools/final.yml
 conda activate salmonella
 ```
+This will install all the packages used, so no need to follow the Diary for installation
 #### Usage Instructions
 
 
@@ -23,6 +24,10 @@ conda activate salmonella
 
 #### Creation Diary
 - setup a conda environment from yml file
+```
+conda env create -n salmonella -f tools/environment.yml
+conda activate salmonella
+```
 - created a folder strucutre and README
 - Read about sra-tools [here](https://eaton-lab.org/articles/sra-downloads/) -> tool fastq-dump for downloading fastq files
 - Read about SPAdes [here] (https://github.com/ablab/spades)
