@@ -5,8 +5,10 @@
 >Your boss is looking for a motivated student to do some reproducible data analysis on a few
 >Salmonella enterica genomes they sequenced recently.
 
-### Task 1: Salmonella: a brief introduction
-
+### Salmonella: a brief introduction
+Salmonella enterica are Gram-negative, facultative anaerobic, flagellate bacteria. 
+Some of it serovars are human pathogens.
+In humans, Salmonella are the cause of two diseases called salmonellosis: enteric fever (typhoid), resulting from bacterial invasion of the bloodstream, and acute gastroenteritis, resulting from a foodborne infection/intoxication.(Todar, Kenneth. ["Salmonella and Salmonellosis"](http://www.textbookofbacteriology.net/salmonella.html). Todar's Online Textbook of Bacteriology.) 
 
 
 
