@@ -28,7 +28,8 @@ snakemake --cores 4
 ```
 
 #### Results
-The results can be found in the "data/" and the "plots/" folder.
+The results can be found in the "data/" and the "plots/" folder.   
+
 An Analysis report is being created automatically and can be found [here](data/Analysis.md).
 
 #### Creation Diary
