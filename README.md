@@ -6,9 +6,10 @@
 >Salmonella enterica genomes they sequenced recently.
 
 ### Salmonella: a brief introduction
-Salmonella enterica are Gram-negative, facultative anaerobic, flagellate bacteria. 
-Some of it serovars are human pathogens.
-In humans, Salmonella are the cause of two diseases called salmonellosis: enteric fever (typhoid), resulting from bacterial invasion of the bloodstream, and acute gastroenteritis, resulting from a foodborne infection/intoxication.(Todar, Kenneth. ["Salmonella and Salmonellosis"](http://www.textbookofbacteriology.net/salmonella.html). Todar's Online Textbook of Bacteriology.) 
+Salmonella enterica are Gram-negative, facultative anaerobic, flagellate bacteria.  
+Some of it serovars are human pathogens.  
+In humans, Salmonella are the cause of two diseases called salmonellosis: enteric fever (typhoid), resulting from bacterial invasion of the bloodstream, and acute gastroenteritis, resulting from a foodborne infection/intoxication.  
+(Todar, Kenneth. ["Salmonella and Salmonellosis"](http://www.textbookofbacteriology.net/salmonella.html). Todar's Online Textbook of Bacteriology.) 
 
 
 
