@@ -117,9 +117,7 @@ screen -S Spades
 ```
 snakemake --cores 6
 ```
-Todo:
-- Logging
-- Document input, output (outside of Snakefile)
+
 
 Added additional barcodes to config.yaml
 
@@ -183,4 +181,5 @@ The scripts generate an [Analysis file](data/Analysis.md).
 |---|
 |![pipeline overview](dag-final.svg)|
 
-
+Todo:
+-Logging
