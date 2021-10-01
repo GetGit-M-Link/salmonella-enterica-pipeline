@@ -16,10 +16,12 @@ conda activate salmonella
 ```
 This will install all the packages used, so no need to follow the Diary for installation
 #### Usage Instructions
-
+```
+snakemake --cores 4
+```
 
 #### Results
-
+The results can be found in the data/ folder.
 
 
 #### Creation Diary
