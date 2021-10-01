@@ -173,7 +173,7 @@ conda install biopython    (1.78)
 ```
 Added both scripts to the pipeline so that they are automatically called.
 The scripts generate an [Analysis file](data/Analysis.md).
-Here is the final pipeline overview:
+
 |pipeline overview|
 |---|
 |![pipeline overview](dag-final.svg)|
