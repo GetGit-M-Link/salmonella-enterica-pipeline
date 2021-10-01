@@ -1,6 +1,6 @@
 ## A genomics pipeline with snakemake
 
-![pipeline overview](dag-analysis.svg)
+![pipeline overview](dag-simplified.svg)
 
 >Your boss is looking for a motivated student to do some reproducible data analysis on a few
 >Salmonella enterica genomes they sequenced recently.
