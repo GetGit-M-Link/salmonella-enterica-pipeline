@@ -37,5 +37,16 @@ plt.tight_layout()
 plt.savefig("plots/advanced/numberofcontigs")
 plt.clf()
 
+with open("data/Analysis.md",'r') as original: analysis = original.read()
+with open("data/Analysis.md",'w') as advanced: 
+    advanced.write(f"""## Analysis
+#### comparison of the best assemblies
+|N50 comparison|assembly length comparison|number of contigs
+|---|---|---|
+|<img src="../plots/advanced/N50.png" width="400">|<img src="../plots/advanced/assemblylength.png" width="400">|<img src="../plots/advanced/numberofcontigs.png" width="400">|  
+  
 
+#### analysis for all assemblies  
+  
+  """ + analysis)
 
