@@ -261,7 +261,7 @@ for assembly_list in masterlist_of_short_assemblies:
             best_assembly = sorted_assemblies[1].contigs_fasta_filename
             best_assemblies_data.append(sorted_assemblies[1])
     best_assemblies.append(best_assembly)
-with open("data/" + "best_assemblies.txt", 'w') as out_best_assemblies:
+with open("/data/" + "best_assemblies.txt", 'w') as out_best_assemblies:
     out_best_assemblies.write(str(best_assemblies))
 best_assemblies_data.sort(key=lambda x: x.barcode, reverse=False)
 
