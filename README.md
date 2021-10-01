@@ -21,7 +21,7 @@ snakemake --cores 4
 ```
 
 #### Results
-The results can be found in the data/ and the plots/ folder.
+The results can be found in the "data/" and the "plots/" folder.
 An Analysis report is being created automatically and can be found [here](data/Analysis.md).
 
 #### Creation Diary
@@ -30,7 +30,7 @@ An Analysis report is being created automatically and can be found [here](data/A
 conda env create -n salmonella -f tools/environment.yml
 conda activate salmonella
 ```
-- created a folder strucutre and README
+- created a folder structure and README
 - Read about sra-tools [here](https://eaton-lab.org/articles/sra-downloads/) -> tool fastq-dump for downloading fastq files
 - Read about SPAdes [here] (https://github.com/ablab/spades)
 - State of tools and version at this time [here](https://gitlab.rlp.net/bioinformatik-praktikum-sose21/MLink/salmonella-enterica-pipeline/-/blob/main/tools/tools-state-after-first-tools-install)
