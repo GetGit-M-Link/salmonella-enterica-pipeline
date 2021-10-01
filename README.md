@@ -32,7 +32,10 @@ The results can be found in the "data/" and the "plots/" folder.
 
 An Analysis report is being created automatically and can be found [here](data/Analysis.md).
 
-<iframe src="installed_list.txt"></iframe>
+<iframe src="installed_list.txt"></iframe>    
+  
+    
+    
 #### Creation Diary
 - setup a conda environment from yml file
 ```
