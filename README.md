@@ -101,6 +101,7 @@ rule download_sr:
 Upgraded sra-tools to a newer version to get access to fasterq-dump
 ```
 conda install sra-tools=2.11.0
+conda install spades
 ```
 ```
 screen -S Spades
@@ -168,6 +169,9 @@ Update analysis script for long reads
 ```
 conda install biopython    (1.78)
 ```
-
+Added both scripts to the pipeline so that they are automatically called.
+The scripts generate an [Analysis file](data/Analysis.md).
+Here is the final pipeline overview:
+![pipeline overview](dag-analysis.svg)
 
 
