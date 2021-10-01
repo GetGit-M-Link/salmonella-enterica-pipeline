@@ -47,7 +47,7 @@ rule assemble_long_reads:
         preprocessed="/data/long_read_preprocessed/{long_barcodes}.paf.gz",
         raw_reads="/data/short-reads_single/{long_barcodes}.fastq"
     output:
-        "/data/assembled/{long_barcodes}/contigs.gfa"
+        "/data/long_read_assembled/{long_barcodes}/contigs.gfa"
         
     log:
         "logs/miniasm/{long_barcodes}.log"
@@ -57,9 +57,9 @@ rule assemble_long_reads:
         """
 rule gfa_to_fasta:
     input:
-        "/data/assembled/{long_barcodes}/contigs.gfa"
+        "/data/long_read_assembled/{long_barcodes}/contigs.gfa"
     output:
-        "/data/assembled/{long_barcodes}/contigs.fasta"
+        "/data/long_read_assembled/{long_barcodes}/contigs.fasta"
     log:
         "logs/awk/{long_barcodes}.log"
     shell:
